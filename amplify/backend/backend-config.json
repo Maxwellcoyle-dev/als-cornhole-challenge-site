@@ -1,0 +1,51 @@
+{
+  "api": {
+    "StripePaymentIntentCreatorAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "StripePaymentIntentCreator"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "StripePaymentIntentCreator": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_StripePaymentIntentCreator_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripePaymentIntentCreator"
+        }
+      ]
+    },
+    "AMPLIFY_function_StripePaymentIntentCreator_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripePaymentIntentCreator"
+        }
+      ]
+    },
+    "AMPLIFY_function_StripePaymentIntentCreator_stripeSecretKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripePaymentIntentCreator"
+        }
+      ]
+    }
+  }
+}
