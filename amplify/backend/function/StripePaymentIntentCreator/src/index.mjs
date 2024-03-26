@@ -1,15 +1,14 @@
-import stripe from "stripe";
+import Stripe from "stripe";
 
-const stripe = new stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const handler = async (event) => {
-  // Make sure to use the right API version
-  stripe.setApiVersion("2020-08-27");
-
   try {
     // Parse the body from the event
     const body = JSON.parse(event.body);
+    console.log("Body: ", body);
     const { items } = body;
+    console.log("Items: ", items);
 
     // Calculate order amount on the server to prevent manipulation
     const calculateOrderAmount = (items) => {
@@ -31,6 +30,7 @@ export const handler = async (event) => {
       statusCode: 200,
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({ clientSecret: paymentIntent.client_secret }),
     };

@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import EventDetailsPage from "./pages/EventDetailsPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage";
-import ProtectedRoute from "./ProtectedRoute";
 
 const { Header, Content, Footer } = Layout; // Destructuring Layout components
 
@@ -22,14 +21,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/event/:id" element={<EventDetailsPage />} />
-            <Route
-              path="/register"
-              element={
-                <ProtectedRoute>
-                  <RegistrationPage />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/registration" element={<RegistrationPage />} />
           </Routes>
         </Content>
         <Footer style={{ textAlign: "center" }}>
