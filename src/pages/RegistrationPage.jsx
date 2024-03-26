@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import CheckoutForm from "./CheckoutForm";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
 const RegistrationPage = () => {
   const [clientSecret, setClientSecret] = useState("");
