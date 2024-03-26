@@ -22,8 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Sensitive Amplify Data
+# Sensitive Data
 team-provider-info.json
+.env
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
