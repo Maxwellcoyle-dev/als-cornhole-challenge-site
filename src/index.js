@@ -3,6 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ConfigProvider } from "antd";
 
+import { Amplify } from "aws-amplify";
+import config from "./amplifyconfiguration.json";
+Amplify.configure(config);
+
 // Define your custom theme variables
 const theme = {
   token: {
