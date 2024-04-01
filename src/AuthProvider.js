@@ -1,19 +1,14 @@
-import React, { createContext, useContext, useState } from "react";
+import React from "react";
+import { Authenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css"; // default theme
+import App from "./App";
 
-const AuthContext = createContext(null);
-
-export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Placeholder function for login logic
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
-
+const AuthProvider = () => {
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <Authenticator.Provider>
+      <App />
+    </Authenticator.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export default AuthProvider;

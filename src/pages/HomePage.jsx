@@ -1,10 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { events } from "../events"; // Double-check this path
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthenticator } from "@aws-amplify/ui-react";
+
+import { events } from "../events";
+
 import { Card, List, Button, Typography, Flex, Image } from "antd";
+
 const { Title, Paragraph } = Typography;
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+
+  useEffect(() => {
+    // sessionStorage.removeItem("postSignInRedirect");
+    console.log("homepage events: ", events);
+    // extract session storage
+    const storedSessionState = sessionStorage.getItem("postSignInRedirect");
+
+    if (storedSessionState) {
+      const sessionState = JSON.parse(storedSessionState);
+      console.log("session state: ", sessionState);
+
+      const pathname = sessionState.pathname;
+      const event = sessionState.state?.event;
+      console.log("pathname: ", pathname);
+      console.log("eventID: ", event);
+
+      console.log("authStatus: ", authStatus);
+
+      const navigateToRegistration = () =>
+        navigate("/registration", { state: { event } });
+      if (
+        pathname === "/registration" &&
+        event &&
+        authStatus === "authenticated"
+      ) {
+        console.log("navigating to registration page");
+        navigateToRegistration();
+        // clear session storage
+        sessionStorage.removeItem("postSignInRedirect");
+      }
+    }
+  }, [authStatus]);
+
+  if (authStatus === "configuring") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Flex style={{ padding: "20px" }} vertical>
       <Flex style={{ marginBottom: "20px" }}>

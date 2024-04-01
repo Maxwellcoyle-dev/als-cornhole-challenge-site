@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import AuthProvider from "./AuthProvider";
 import { ConfigProvider } from "antd";
 
 import { Amplify } from "aws-amplify";
@@ -18,7 +19,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ConfigProvider theme={theme}>
-      <App />
+      <AuthProvider />
     </ConfigProvider>
   </React.StrictMode>
 );
