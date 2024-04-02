@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { events } from "../events"; // Ensure this path is correct
+import useListEvents from "../hooks/useListEvents";
 import { Typography, Button, List, Card, Collapse } from "antd";
 const { Title, Paragraph } = Typography;
 const { Panel } = Collapse;
 
 const EventDetailsPage = () => {
+  const [event, setEvent] = useState(null);
+  const { events } = useListEvents();
   const navigate = useNavigate();
-  const { id } = useParams();
-  const event = events.find((event) => event.id === parseInt(id, 10));
-  console.log("Event: ", event);
+  const { event_id } = useParams();
+
+  useEffect(() => {
+    const selectedEvent = events.find((event) => event.id === event_id);
+    setEvent(selectedEvent);
+  }, [events, event_id]);
+
+  useEffect(() => {
+    console.log("events: ", events);
+    console.log("event: ", event);
+  }, [event]);
 
   // Placeholder for registered teams, replace with actual data structure
-  const registeredTeams = event.registeredTeams || [];
+  const registeredTeams = event?.registeredTeams || [];
 
+  if (!event) {
+    return <Title>Loading...</Title>;
+  }
   return (
     <Card bordered={false} style={{ margin: "20px" }}>
       <Title>{event.name}</Title>
@@ -45,7 +58,6 @@ const EventDetailsPage = () => {
             <Card>
               <Collapse bordered={false} defaultActiveKey={["1"]}>
                 <Panel header={team.name} key="1">
-                  {/* Placeholder for additional team details */}
                   <Paragraph>Additional details about {team.name}</Paragraph>
                 </Panel>
               </Collapse>

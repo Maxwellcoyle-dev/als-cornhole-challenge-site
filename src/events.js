@@ -1,28 +1,24 @@
 export const events = [
   {
-    id: 1,
+    event_id: 1,
+    event_date: "2024-07-04T10:00:00Z",
     name: "Summer Cornhole Classic",
-    date: "July 4, 2024",
     location: "Central Park, New York City",
-    startTime: "10:00 AM",
+    start_time: "10:00",
     cost: 45,
-    eventInformation:
+    description:
       "Join us for our annual Summer Cornhole Classic in the heart of Central Park! This exciting tournament will feature competitive cornhole matches, food trucks, and fun for the whole family. All skill levels are welcome.",
-    depositInfo:
-      "A non-refundable deposit of $10 per team is required to secure your spot. The remaining team fee of $40 will be due at the event.",
-    registrationButton: true,
+    max_teams: 20,
   },
   {
-    id: 2,
+    event_id: "2",
+    event_date: "2024-10-10T14:00:00Z",
     name: "Autumn Cornhole Showdown",
-    date: "October 15, 2024",
     location: "Golden Gate Park, San Francisco",
-    startTime: "11:00 AM",
+    startTime: "11:00",
     cost: 45,
-    eventInformation:
+    description:
       "Get ready for a spectacular cornhole event in the beautiful Golden Gate Park! The Autumn Cornhole Showdown promises exciting matches, live music, and a vibrant atmosphere. Don't miss this chance to compete and support a worthy cause.",
-    depositInfo:
-      "A non-refundable deposit of $10 per team is required to secure your spot. The remaining team fee of $35 will be due at the event.",
-    registrationButton: true,
+    max_teams: 20,
   },
 ];
