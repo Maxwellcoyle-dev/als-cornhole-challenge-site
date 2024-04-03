@@ -13,11 +13,7 @@ const HomePage = () => {
 
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
-  const { fetchEvents, events } = useListEvents();
-
-  useEffect(() => {
-    fetchEvents();
-  }, [events]);
+  const { events, isError, isPending } = useListEvents();
 
   useEffect(() => {
     // sessionStorage.removeItem("postSignInRedirect");

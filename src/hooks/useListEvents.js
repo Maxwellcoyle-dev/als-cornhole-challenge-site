@@ -1,22 +1,23 @@
-import { useState } from "react";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const useListEvents = () => {
-  const [events, setEvents] = useState([]);
-
   const listEventsEndpoint =
     "https://dk7qlt962d.execute-api.us-east-2.amazonaws.com/Stage/list-events";
 
   const fetchEvents = async () => {
-    try {
-      const response = await axios.get(listEventsEndpoint);
-      setEvents(response.data);
-    } catch (error) {
-      console.error("error fetching events: ", error);
-    }
+    const response = await axios.get(listEventsEndpoint);
+    console.log("response: ", response.data);
+    return response.data;
   };
 
-  return { fetchEvents, events };
+  const {
+    data: events,
+    isPending,
+    isError,
+  } = useQuery({ queryKey: ["events"], queryFn: fetchEvents });
+
+  return { events, isPending, isError };
 };
 
 export default useListEvents;

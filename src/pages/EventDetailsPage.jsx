@@ -1,55 +1,67 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useListEvents from "../hooks/useListEvents";
+import { registrationInfo } from "../registrationInfo";
+
 import { Typography, Button, List, Card, Collapse } from "antd";
+
+import useListEvents from "../hooks/useListEvents";
+
 const { Title, Paragraph } = Typography;
 const { Panel } = Collapse;
 
 const EventDetailsPage = () => {
-  const [event, setEvent] = useState(null);
-  const { events } = useListEvents();
   const navigate = useNavigate();
   const { event_id } = useParams();
+  const { events, isPending, isError } = useListEvents();
 
-  useEffect(() => {
-    const selectedEvent = events.find((event) => event.id === event_id);
-    setEvent(selectedEvent);
-  }, [events, event_id]);
+  const event = events?.find((event) => event.id === event_id);
+  console.log(event);
 
-  useEffect(() => {
-    console.log("events: ", events);
-    console.log("event: ", event);
-  }, [event]);
+  const [registeredTeams, setRegisteredTeams] = useState([]); // place holder for registered teams list
 
-  // Placeholder for registered teams, replace with actual data structure
-  const registeredTeams = event?.registeredTeams || [];
-
-  if (!event) {
+  if (isPending) {
     return <Title>Loading...</Title>;
   }
+
+  if (isError) {
+    return <Title>Error loading events</Title>;
+  }
+
   return (
     <Card bordered={false} style={{ margin: "20px" }}>
       <Title>{event.name}</Title>
-      <Paragraph>Date: {event.date}</Paragraph>
+      <Paragraph>Date: {event.event_date}</Paragraph>
       <Paragraph>Location: {event.location}</Paragraph>
-      <Paragraph>Start Time: {event.startTime}</Paragraph>
+      <Paragraph>Start Time: {event.start_time}</Paragraph>
       <Paragraph>Cost: ${event.cost}</Paragraph>
 
       <Title level={2}>Event Information</Title>
-      <Paragraph>{event.eventInformation}</Paragraph>
+      <Paragraph>{event.description}</Paragraph>
 
       <Title level={2}>Registration Details</Title>
-      <Paragraph>{event.depositInfo}</Paragraph>
-      {event.registrationButton && (
-        <Button
-          type="primary"
-          block
-          onClick={() => navigate("/registration", { state: { event } })}
-        >
-          Register
-        </Button>
-      )}
-      {}
+      <Paragraph>{registrationInfo.introDescription}</Paragraph>
+      <List
+        dataSource={registrationInfo.registrationOptions}
+        renderItem={(option) => (
+          <List.Item>
+            <List.Item.Meta
+              title={option.optionName}
+              description={option.optionDescription}
+            />
+          </List.Item>
+        )}
+      />
+      <Paragraph>{registrationInfo.endingDescription}</Paragraph>
+      <Paragraph>Note: {registrationInfo.refundNote}</Paragraph>
+
+      <Button
+        type="primary"
+        block
+        onClick={() => navigate("/registration", { state: { event } })}
+      >
+        Register
+      </Button>
+
       <Title level={2}>Registered Teams</Title>
       <List
         dataSource={registeredTeams}
