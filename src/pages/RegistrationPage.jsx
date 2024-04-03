@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import CheckoutForm from "../components/CheckoutForm";
+import StripeCheckoutForm from "../components/StripeCheckoutForm";
+import RegistrationForm from "../components/RegistrationForm";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -39,9 +40,15 @@ const RegistrationPage = () => {
 
   return (
     <div className="App">
+      <h1>Register for {event?.name}</h1>
+      <RegistrationForm />
+      <p>
+        Dev Note: Consider graying out the payment form until the top
+        registration for is complete
+      </p>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutForm event={event} />
+          <StripeCheckoutForm event={event} />
         </Elements>
       ) : (
         "Loading..."

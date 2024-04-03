@@ -5,7 +5,7 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 
-const CheckoutForm = () => {
+const StripeCheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState(null);
@@ -53,4 +53,4 @@ const CheckoutForm = () => {
   );
 };
 
-export default CheckoutForm;
+export default StripeCheckoutForm;
