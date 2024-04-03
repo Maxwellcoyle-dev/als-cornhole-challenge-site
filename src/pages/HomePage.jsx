@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
-import { events } from "../events";
+import useListEvents from "../hooks/useListEvents";
 
 import { Card, List, Button, Typography, Flex, Image } from "antd";
 
@@ -12,6 +12,8 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+
+  const { events, isError, isPending } = useListEvents();
 
   useEffect(() => {
     // sessionStorage.removeItem("postSignInRedirect");
@@ -45,9 +47,9 @@ const HomePage = () => {
     }
   }, [authStatus]);
 
-  if (authStatus === "configuring") {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    console.log("events: ", events);
+  }, []);
 
   return (
     <Flex style={{ padding: "20px" }} vertical>
@@ -80,17 +82,17 @@ const HomePage = () => {
           <List.Item>
             <Card
               title={event.name}
-              cover={
-                <img
-                  alt="Event"
-                  src={event.imagePath}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              }
+              // cover={
+              //   <img
+              //     alt="Event"
+              //     src={event.imagePath}
+              //     style={{ width: "100%", height: "auto" }}
+              //   />
+              // }
             >
-              <Paragraph>Date: {event.date}</Paragraph>
+              <Paragraph>Date: {event.event_date}</Paragraph>
               <Paragraph>Location: {event.location}</Paragraph>
-              <Link to={`/event/${event.id}`}>
+              <Link to={`/event/${event.event_id}`}>
                 <Button type="primary" block>
                   View Details
                 </Button>
