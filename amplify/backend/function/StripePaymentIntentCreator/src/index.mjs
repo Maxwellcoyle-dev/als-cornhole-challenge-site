@@ -13,7 +13,7 @@ export const handler = async (event) => {
     // Calculate order amount on the server to prevent manipulation
     const calculateOrderAmount = (items) => {
       // Replace this with actual calculation logic
-      return 1400;
+      return 5000;
     };
 
     // Create a PaymentIntent with the order amount and currency

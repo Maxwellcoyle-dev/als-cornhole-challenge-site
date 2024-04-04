@@ -15,6 +15,10 @@ const RegistrationPage = () => {
   const event = location.state?.event;
 
   useEffect(() => {
+    if (!event) {
+      return;
+    }
+
     // Your existing createPaymentIntent logic, slightly modified
     const createPaymentIntent = async () => {
       try {
@@ -33,9 +37,7 @@ const RegistrationPage = () => {
       }
     };
 
-    if (event) {
-      createPaymentIntent();
-    }
+    createPaymentIntent();
   }, [event]);
 
   return (
