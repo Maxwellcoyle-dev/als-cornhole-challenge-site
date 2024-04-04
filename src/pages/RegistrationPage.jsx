@@ -1,60 +1,47 @@
-// Import useEffect and useState if not already imported
+// Library Imports
 import React, { useEffect, useState } from "react";
+
 import { useLocation } from "react-router-dom";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import axios from "axios";
-import StripeCheckoutForm from "../components/StripeCheckoutForm";
+
+// Components
+import StripePaymentWrapper from "../components/StripePaymentWrapper";
 import RegistrationForm from "../components/RegistrationForm";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const defaultRegistrationFormData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  partners: [""],
+};
 
 const RegistrationPage = () => {
-  const [clientSecret, setClientSecret] = useState("");
+  const [registrationFormData, setRegistrationFormData] = useState(
+    defaultRegistrationFormData
+  ); // Store registration data
+
+  const [registrationComplete, setRegistrationComplete] = useState(false); // Store registration completion status
+
+  // Get Event speficic data from location state
   const location = useLocation();
   const event = location.state?.event;
 
   useEffect(() => {
+    console.log("Event:", event);
     if (!event) {
       return;
     }
-
-    // Your existing createPaymentIntent logic, slightly modified
-    const createPaymentIntent = async () => {
-      try {
-        const response = await axios.post(
-          "https://cc8gl6kr3h.execute-api.us-east-2.amazonaws.com/staging/stripe-payment-intent-creator-api",
-          { items: [{ id: event.id }] },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        setClientSecret(response.data.clientSecret);
-      } catch (error) {
-        console.error("Error:", error.response);
-      }
-    };
-
-    createPaymentIntent();
   }, [event]);
 
   return (
     <div className="App">
       <h1>Register for {event?.name}</h1>
-      <RegistrationForm />
-      <p>
-        Dev Note: Consider graying out the payment form until the top
-        registration for is complete
-      </p>
-      {clientSecret ? (
-        <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <StripeCheckoutForm event={event} />
-        </Elements>
-      ) : (
-        "Loading..."
-      )}
+      <RegistrationForm
+        registrationFormData={registrationFormData}
+        setRegistrationFormData={setRegistrationFormData}
+        setRegistrationComplete={setRegistrationComplete}
+        eventCost={event?.cost}
+      />
+      {registrationComplete && <StripePaymentWrapper event={event} />}
     </div>
   );
 };
