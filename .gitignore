@@ -24,7 +24,7 @@ yarn-error.log*
 
 # Sensitive Data
 team-provider-info.json
-.env
+# .env
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
@@ -39,7 +39,7 @@ dist/
 node_modules/
 aws-exports.js
 awsconfiguration.json
-amplifyconfiguration.json
+# amplifyconfiguration.json
 amplifyconfiguration.dart
 amplify-build-config.json
 amplify-gradle-config.json
