@@ -107,7 +107,7 @@ const HomePage = () => {
 					Upcoming Tournaments
 				</Title>
 				<List
-					grid={{ column: events.length }}
+					grid={{ column: events?.length }}
 					dataSource={events}
 					renderItem={(event) => (
 						<List.Item>
