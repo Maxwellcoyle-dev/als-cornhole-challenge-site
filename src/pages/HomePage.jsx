@@ -4,6 +4,7 @@ import { useAuthenticator } from "@aws-amplify/ui-react";
 import useListEvents from "../hooks/useListEvents";
 import { Card, List, Button, Typography, Flex } from "antd";
 import dayjs from "dayjs";
+import { IoLocationOutline } from "react-icons/io5";
 
 const { Title, Paragraph } = Typography;
 
@@ -102,14 +103,15 @@ const HomePage = () => {
 				</Typography>
 			</Flex>
 			<div style={{ marginLeft: "2rem", marginBottom: "4rem" }}>
-				<Title level={2}>Upcoming Tournaments</Title>
+				<Title style={{ marginBottom: "2rem" }} level={2}>
+					Upcoming Tournaments
+				</Title>
 				<List
 					grid={{ column: events.length }}
 					dataSource={events}
 					renderItem={(event) => (
 						<List.Item>
 							<Card
-								title={event.name}
 								// cover={
 								//   <img
 								//     alt="Event"
@@ -117,16 +119,40 @@ const HomePage = () => {
 								//     style={{ width: "100%", height: "auto" }}
 								//   />
 								// }
+								style={{
+									boxShadow:
+										"rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px",
+								}}
 							>
 								<Paragraph>
-									Date: {dayjs(event.event_date).format("MM/DD/YYYY")}
+									{dayjs(event.event_date).format("ddd, MMM d, YYYY")}
 								</Paragraph>
-								<Paragraph>Location: {event.location}</Paragraph>
-								<Link to={`/event/${event.event_id}`}>
-									<Button type='primary' block>
-										View Details
-									</Button>
-								</Link>
+								<Title level={5}>{event.name}</Title>
+								<Paragraph
+									style={{
+										display: "flex",
+										alignItems: "center",
+										gap: ".5rem",
+									}}
+								>
+									<IoLocationOutline />
+									{event.location}
+								</Paragraph>
+								<div
+									style={{
+										width: "100%",
+										display: "flex",
+										justifyContent: "space-between",
+										marginTop: "4rem",
+									}}
+								>
+									<span>*ATTENDEES*</span>
+									<Link to={`/event/${event.event_id}`}>
+										<Button type='primary' block>
+											View Details
+										</Button>
+									</Link>
+								</div>
 							</Card>
 						</List.Item>
 					)}
