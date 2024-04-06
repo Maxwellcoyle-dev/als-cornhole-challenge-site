@@ -17,36 +17,36 @@ const { Header, Content, Footer } = Layout; // Destructuring Layout components
 const queryClient = new QueryClient();
 
 const App = () => {
-	return (
-		<QueryClientProvider client={queryClient}>
-			<Router>
-				<Layout className='layout' style={{ minHeight: "100vh", margin: 0 }}>
-					<Header style={{ background: "none" }}>
-						<Navbar />
-					</Header>
-					<Content>
-						<Routes>
-							<Route path='/' element={<HomePage />} />
-							<Route path='/about' element={<AboutPage />} />
-							<Route path='/event/:id' element={<EventDetailsPage />} />
-							<Route
-								path='/registration'
-								element={
-									<ProtectedRoute>
-										<RegistrationPage />
-									</ProtectedRoute>
-								}
-							/>
-							<Route path='/signin' element={<SigninPage />} />
-						</Routes>
-					</Content>
-					<Footer style={{ textAlign: "center", fontSize: ".75rem" }}>
-						Cornhole Tournaments ©2024 Created for a Cause
-					</Footer>
-				</Layout>
-			</Router>
-		</QueryClientProvider>
-	);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Layout className="layout" style={{ minHeight: "100vh", margin: 0 }}>
+          <Header style={{ background: "none" }}>
+            <Navbar />
+          </Header>
+          <Content>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/event/:id" element={<EventDetailsPage />} />
+              <Route
+                path="/registration"
+                element={
+                  <ProtectedRoute>
+                    <RegistrationPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/signin" element={<SigninPage />} />
+            </Routes>
+          </Content>
+          <Footer style={{ textAlign: "center", fontSize: ".75rem" }}>
+            Cornhole Tournaments ©2024 Created for a Cause
+          </Footer>
+        </Layout>
+      </Router>
+    </QueryClientProvider>
+  );
 };
 
 export default App;
