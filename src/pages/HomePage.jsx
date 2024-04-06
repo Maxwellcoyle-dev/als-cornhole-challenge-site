@@ -17,9 +17,7 @@ const HomePage = () => {
 
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
-  const { events, eventsIsError, eventsIsPending } = useListEvents();
-  const { putRegistration, isPending, isError, registration } =
-    useCreateRegistration();
+  const { events, isError, isPending } = useListEvents();
 
   useEffect(() => {
     // sessionStorage.removeItem("postSignInRedirect");
@@ -64,7 +62,7 @@ const HomePage = () => {
           position: "relative",
           height: "30rem",
           width: "100%",
-          backgroundImage: `url(${heroImage})`,
+          backgroundImage: `url(https://cornhole-site-asset-bucket.s3.us-east-2.amazonaws.com/hero-image-cornhole-board.svg)`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
