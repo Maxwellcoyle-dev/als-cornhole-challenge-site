@@ -8,7 +8,6 @@ import { IoLocationOutline } from "react-icons/io5";
 import heroImage from "../assets/hero-image-cornhole-board.svg";
 
 import useListEvents from "../hooks/useListEvents";
-import useCreateRegistration from "../hooks/useCreateRegistration";
 
 const { Title, Paragraph } = Typography;
 
@@ -17,7 +16,7 @@ const HomePage = () => {
 
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
-  const { events, isError, isPending } = useListEvents();
+  const { events } = useListEvents();
 
   useEffect(() => {
     // sessionStorage.removeItem("postSignInRedirect");
@@ -62,7 +61,7 @@ const HomePage = () => {
           position: "relative",
           height: "30rem",
           width: "100%",
-          backgroundImage: `url(https://cornhole-site-asset-bucket.s3.us-east-2.amazonaws.com/hero-image-cornhole-board.svg)`,
+          backgroundImage: `url(${heroImage})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
