@@ -63,12 +63,12 @@
     "breakCircularDependency": true,
     "dependsOn": [],
     "userPoolGroups": false,
-    "adminQueries": true,
+    "adminQueries": false,
     "triggers": {},
-    "authProviders": [],
     "parentStack": {
       "Ref": "AWS::StackId"
     },
-    "permissions": []
+    "permissions": [],
+    "authProviders": []
   }
 }
