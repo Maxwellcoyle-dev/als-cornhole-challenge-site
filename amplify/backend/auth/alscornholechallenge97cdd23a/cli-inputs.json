@@ -1,8 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "resourceNameTruncated": "alscor2d2f3e29",
-    "userPoolName": "alscornholechallenge2d2f3e29_userpool_2d2f3e29",
+    "identityPoolName": "alscornholechallenge97cdd23a_identitypool_97cdd23a",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "alscor97cdd23a",
+    "userPoolName": "alscornholechallenge97cdd23a_userpool_97cdd23a",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -24,26 +26,27 @@
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-      "family_name",
-      "given_name",
       "email"
     ],
     "userpoolClientReadAttributes": [
-      "email",
-      "family_name",
-      "given_name",
-      "profile"
+      "email"
     ],
-    "userpoolClientLambdaRole": "alscor2d2f3e29_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": true,
-    "sharedId": "2d2f3e29",
-    "resourceName": "alscornholechallenge2d2f3e29",
-    "authSelections": "userPoolOnly",
-    "useDefault": "manual",
-    "hostedUI": false,
+    "userpoolClientLambdaRole": "alscor97cdd23a_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "97cdd23a",
+    "resourceName": "alscornholechallenge97cdd23a",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
     "usernameAttributes": [
       "email"
     ],
+    "triggers": {},
+    "hostedUIDomainName": "alscornholechallenge",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
@@ -62,13 +65,10 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": {},
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://alscornholechallenge.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://alscornholechallenge.com/\"]}",
     "parentStack": {
       "Ref": "AWS::StackId"
     },
-    "permissions": [],
-    "authProviders": []
+    "permissions": []
   }
 }

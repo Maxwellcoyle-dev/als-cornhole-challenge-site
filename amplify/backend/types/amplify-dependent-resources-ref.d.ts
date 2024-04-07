@@ -7,9 +7,13 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "alscornholechallenge2d2f3e29": {
+    "alscornholechallenge97cdd23a": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
+      "HostedUIDomain": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "OAuthMetadata": "string",
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"

@@ -7,7 +7,6 @@ import "./App.css";
 
 import { Amplify } from "aws-amplify";
 import config from "./amplifyconfiguration.json";
-config.oauth.domain = "auth.alscornholechallenge.com";
 Amplify.configure(config);
 
 // Define your custom theme variables

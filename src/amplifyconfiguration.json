@@ -7,12 +7,12 @@
       "region": "us-east-2"
     }
   ],
-  "aws_cognito_identity_pool_id": "us-east-2:89cdaeb7-f556-4a32-8522-32280e6c5a45",
+  "aws_cognito_identity_pool_id": "us-east-2:24dd18f7-8632-41ce-bb55-38720d0ccc2b",
   "aws_cognito_region": "us-east-2",
-  "aws_user_pools_id": "us-east-2_GzzU0fXMn",
-  "aws_user_pools_web_client_id": "51nfhg5pdrbvgaabggln6p5vqj",
+  "aws_user_pools_id": "us-east-2_rkBID3aLV",
+  "aws_user_pools_web_client_id": "4p0t7s7o94jabr87dr1qa9diul",
   "oauth": {
-    "domain": "alscornholechallenge2d2f3e29-2d2f3e29-staging.auth.us-east-2.amazoncognito.com",
+    "domain": "alscornholechallenge-staging.auth.us-east-2.amazoncognito.com",
     "scope": [
       "phone",
       "email",
@@ -20,15 +20,17 @@
       "profile",
       "aws.cognito.signin.user.admin"
     ],
-    "redirectSignIn": "http://localhost:3000/,https://www.alscornholechallenge.com/",
-    "redirectSignOut": "http://localhost:3000/,https://www.alscornholechallenge.com/",
+    "redirectSignIn": "http://localhost:3000/,https://alscornholechallenge.com/",
+    "redirectSignOut": "http://localhost:3000/,https://alscornholechallenge.com/",
     "responseType": "code"
   },
   "federationTarget": "COGNITO_USER_POOLS",
   "aws_cognito_username_attributes": [
     "EMAIL"
   ],
-  "aws_cognito_social_providers": [],
+  "aws_cognito_social_providers": [
+    "GOOGLE"
+  ],
   "aws_cognito_signup_attributes": [
     "EMAIL"
   ],

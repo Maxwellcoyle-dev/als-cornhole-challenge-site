@@ -16,7 +16,7 @@
     }
   },
   "auth": {
-    "alscornholechallenge2d2f3e29": {
+    "alscornholechallenge97cdd23a": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -31,7 +31,9 @@
         "signupAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [
           "EMAIL"
         ],
