@@ -9,7 +9,7 @@ import StripeCheckoutForm from "../components/StripeCheckoutForm";
 // Stripe promise - use publishable key from .env file
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
-const StripePaymentWrapper = ({ event }) => {
+const StripePaymentWrapper = ({ event, setPaymentComplete }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
@@ -42,7 +42,10 @@ const StripePaymentWrapper = ({ event }) => {
     <>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <StripeCheckoutForm eventCost={event.cost} />
+          <StripeCheckoutForm
+            eventCost={event.cost}
+            setPaymentComplete={setPaymentComplete}
+          />
         </Elements>
       ) : (
         "Loading..."

@@ -3,10 +3,7 @@
     "StripePaymentIntentCreatorAPI": {
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "StripePaymentIntentCreator"
         }
@@ -21,25 +18,15 @@
       "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
+        "mfaTypes": ["SMS"],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [
-          "GOOGLE"
-        ],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+        "signupAttributes": ["EMAIL"],
+        "socialProviders": ["GOOGLE"],
+        "usernameAttributes": ["EMAIL"],
+        "verificationMechanisms": ["EMAIL"]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"

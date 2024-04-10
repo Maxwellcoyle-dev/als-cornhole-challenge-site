@@ -10,6 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import EventDetailsPage from "./pages/EventDetailsPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage";
 import SigninPage from "./pages/SigninPage.jsx";
+import MyAccountPage from "./pages/MyAccountPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 const { Header, Content, Footer } = Layout; // Destructuring Layout components
@@ -28,7 +29,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/event/:id" element={<EventDetailsPage />} />
+              <Route path="/event/:event_id" element={<EventDetailsPage />} />
               <Route
                 path="/registration"
                 element={
@@ -38,6 +39,7 @@ const App = () => {
                 }
               />
               <Route path="/signin" element={<SigninPage />} />
+              <Route path="/myAccount" element={<MyAccountPage />} />
             </Routes>
           </Content>
           <Footer style={{ textAlign: "center", fontSize: ".75rem" }}>

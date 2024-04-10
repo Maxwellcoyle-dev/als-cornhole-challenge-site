@@ -12,14 +12,28 @@ const useCreateRegistration = () => {
     registered: false,
   });
 
-  const putRegistration = async ({ event_id, event_date, user_id }) => {
-    console.log("putRegistration: ", event_id, user_id, event_date);
+  const putRegistration = async ({
+    event_id,
+    event_date,
+    user_id,
+    first_name,
+    last_name,
+    team_name,
+  }) => {
+    console.log(
+      "putRegistration: ",
+      event_id,
+      user_id,
+      event_date,
+      first_name,
+      last_name,
+      team_name
+    );
     setIsPending(true);
     setIsError(false);
 
     const header = {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
     };
     try {
       const response = await axios.post(
@@ -28,6 +42,9 @@ const useCreateRegistration = () => {
           event_id,
           event_date,
           user_id,
+          first_name,
+          last_name,
+          team_name,
         },
         {
           headers: header,

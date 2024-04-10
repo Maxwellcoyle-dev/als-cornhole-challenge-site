@@ -5,6 +5,7 @@ import useUserAttributes from "../hooks/useUserAttributes";
 
 const SigninPage = () => {
   const { user: userAttributes } = useUserAttributes();
+
   return (
     <Authenticator
       socialProviders={["google"]}

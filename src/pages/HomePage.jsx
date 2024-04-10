@@ -20,20 +20,14 @@ const HomePage = () => {
 
   useEffect(() => {
     // sessionStorage.removeItem("postSignInRedirect");
-    console.log("homepage events: ", events);
     // extract session storage
     const storedSessionState = sessionStorage.getItem("postSignInRedirect");
 
     if (storedSessionState) {
       const sessionState = JSON.parse(storedSessionState);
-      console.log("session state: ", sessionState);
 
-      const pathname = sessionState.pathname;
+      const pathname = sessionState?.pathname;
       const event = sessionState.state?.event;
-      console.log("pathname: ", pathname);
-      console.log("eventID: ", event);
-
-      console.log("authStatus: ", authStatus);
 
       const navigateToRegistration = () =>
         navigate("/registration", { state: { event } });
@@ -49,10 +43,6 @@ const HomePage = () => {
       }
     }
   }, [authStatus]);
-
-  useEffect(() => {
-    console.log("events: ", events);
-  }, []);
 
   return (
     <Flex vertical>

@@ -8,7 +8,7 @@ import { Card, Typography, Button, List } from "antd";
 
 const { Title } = Typography;
 
-const StripeCheckoutForm = ({ eventCost }) => {
+const StripeCheckoutForm = ({ eventCost, setPaymentComplete }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState(null);
@@ -35,7 +35,9 @@ const StripeCheckoutForm = ({ eventCost }) => {
       setMessage(result.error.message);
       setIsLoading(false);
     } else {
-      setMessage("Payment processing or succeeded!");
+      setMessage("Payment processing succeeded!");
+      setIsLoading(false);
+      setPaymentComplete(true);
     }
   };
 

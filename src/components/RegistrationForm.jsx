@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { Form, Input, Button, Card, Typography } from "antd";
 
+import useUserAttributes from "../hooks/useUserAttributes";
+
 const { Title, Paragraph } = Typography;
 
 const RegistrationForm = ({
@@ -9,6 +11,12 @@ const RegistrationForm = ({
   eventCost, // Assuming eventCost is a prop passed down to this component
   setRegistrationComplete,
 }) => {
+  const { userAttributes } = useUserAttributes();
+
+  useEffect(() => {
+    userAttributes && console.log("User Attributes:", userAttributes);
+  }, []);
+
   const onFinish = (values) => {
     console.log("Success:", values);
 
@@ -17,7 +25,6 @@ const RegistrationForm = ({
       lastName: values.lastName,
       email: values.email,
       teamName: values.teamName,
-      partners: values.partners,
     });
 
     setRegistrationComplete(true);
@@ -36,34 +43,36 @@ const RegistrationForm = ({
   }, [form]);
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ padding: "20px", maxWidth: "1000px", margin: "0 auto" }}>
       <Card
         bordered={false}
-        style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+        style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.12)" }}
       >
-        <Title level={3} style={{ color: "#1890ff" }}>
+        <Title level={4} style={{ color: "#1890ff", marginBottom: "10px" }}>
           Step 1: Registration
         </Title>
-        <Paragraph>
+        <Paragraph style={{ fontSize: "14px" }}>
           Please fill out the registration form. After completing this step, you
           will proceed to the payment process.
         </Paragraph>
-        <Paragraph strong style={{ marginBottom: "20px" }}>
+        <Paragraph strong style={{ marginBottom: "10px", fontSize: "16px" }}>
           Event Cost: <span style={{ color: "#52c41a" }}>${eventCost}</span>
         </Paragraph>
 
         <Form
           form={form}
           name="registration"
+          labelCol={{ span: 4 }}
+          wrapperCol={{ span: 20 }}
+          style={{ width: 800, boxShadow: "none", marginTop: "20px" }}
           initialValues={{
-            firstName: registrationFormData.firstName,
-            lastName: registrationFormData.lastName,
-            email: registrationFormData.email,
-            partners: registrationFormData.partners,
+            firstName: userAttributes?.given_name,
+            lastName: userAttributes?.family_name,
+            email: userAttributes?.email,
+            teamName: registrationFormData.teamName,
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          layout="vertical"
           autoComplete="off"
         >
           <Form.Item
@@ -83,11 +92,11 @@ const RegistrationForm = ({
               { required: true, message: "Please input your last name!" },
             ]}
           >
-            <Input />
+            <Input size="large" />
           </Form.Item>
 
           <Form.Item
-            label="Email Address"
+            label="Email"
             name="email"
             rules={[
               {
@@ -96,8 +105,9 @@ const RegistrationForm = ({
                 message: "Please input your email address!",
               },
             ]}
+            style={{ marginBottom: "12px" }}
           >
-            <Input />
+            <Input size="large" />
           </Form.Item>
 
           <Form.Item
@@ -106,15 +116,16 @@ const RegistrationForm = ({
             rules={[
               { required: true, message: "Please input your team name!" },
             ]}
+            style={{ marginBottom: "12px" }}
           >
-            <Input />
+            <Input size="large" />
           </Form.Item>
 
           <Form.Item>
             <Button
               type="primary"
               htmlType="submit"
-              style={{ marginTop: "10px" }}
+              style={{ width: "auto", margin: "10px" }}
             >
               Next Step
             </Button>

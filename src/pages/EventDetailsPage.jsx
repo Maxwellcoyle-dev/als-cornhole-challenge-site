@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { registrationInfo } from "../registrationInfo";
 
-import { Typography, Button, List, Card, Collapse } from "antd";
+import { Typography, Button, List, Card, Collapse, Divider } from "antd";
 
+// Hooks
 import useListEvents from "../hooks/useListEvents";
+import useListEventRegistrations from "../hooks/useListEventRegistrations";
 
 const { Title, Paragraph } = Typography;
 const { Panel } = Collapse;
@@ -14,10 +16,13 @@ const EventDetailsPage = () => {
   const { event_id } = useParams();
   const { events, isPending, isError } = useListEvents();
 
-  const event = events?.find((event) => event.id === event_id);
-  console.log(event);
+  const event = events?.find((event) => event.event_id === event_id);
 
-  const [registeredTeams, setRegisteredTeams] = useState([]); // place holder for registered teams list
+  const { eventRegistrations } = useListEventRegistrations(event_id);
+
+  useEffect(() => {
+    console.log("eventRegistrations", eventRegistrations);
+  }, [eventRegistrations]);
 
   if (isPending) {
     return <Title>Loading...</Title>;
@@ -29,19 +34,19 @@ const EventDetailsPage = () => {
 
   return (
     <Card bordered={false} style={{ margin: "20px" }}>
-      <Title>{event.name}</Title>
-      <Paragraph>Date: {event.event_date}</Paragraph>
-      <Paragraph>Location: {event.location}</Paragraph>
-      <Paragraph>Start Time: {event.start_time}</Paragraph>
-      <Paragraph>Cost: ${event.cost}</Paragraph>
+      <Title>{event?.name}</Title>
+      <Paragraph>Date: {event?.event_date}</Paragraph>
+      <Paragraph>Location: {event?.location}</Paragraph>
+      <Paragraph>Start Time: {event?.start_time}</Paragraph>
+      <Paragraph>Cost: ${event?.cost}</Paragraph>
 
       <Title level={2}>Event Information</Title>
-      <Paragraph>{event.description}</Paragraph>
+      <Paragraph>{event?.description}</Paragraph>
 
       <Title level={2}>Registration Details</Title>
-      <Paragraph>{registrationInfo.introDescription}</Paragraph>
+      <Paragraph>{registrationInfo?.introDescription}</Paragraph>
       <List
-        dataSource={registrationInfo.registrationOptions}
+        dataSource={registrationInfo?.registrationOptions}
         renderItem={(option) => (
           <List.Item>
             <List.Item.Meta
@@ -51,8 +56,8 @@ const EventDetailsPage = () => {
           </List.Item>
         )}
       />
-      <Paragraph>{registrationInfo.endingDescription}</Paragraph>
-      <Paragraph>Note: {registrationInfo.refundNote}</Paragraph>
+      <Paragraph>{registrationInfo?.endingDescription}</Paragraph>
+      <Paragraph>Note: {registrationInfo?.refundNote}</Paragraph>
 
       <Button
         type="primary"
@@ -62,18 +67,16 @@ const EventDetailsPage = () => {
         Register
       </Button>
 
-      <Title level={2}>Registered Teams</Title>
+      <Divider orientation="left">
+        Registered Teams: {eventRegistrations?.length}
+      </Divider>
       <List
-        dataSource={registeredTeams}
+        header={<div>Team Names</div>}
+        bordered
+        dataSource={eventRegistrations}
         renderItem={(team) => (
           <List.Item>
-            <Card>
-              <Collapse bordered={false} defaultActiveKey={["1"]}>
-                <Panel header={team.name} key="1">
-                  <Paragraph>Additional details about {team.name}</Paragraph>
-                </Panel>
-              </Collapse>
-            </Card>
+            <Typography.Text strong>{team?.team_name}</Typography.Text>
           </List.Item>
         )}
       />

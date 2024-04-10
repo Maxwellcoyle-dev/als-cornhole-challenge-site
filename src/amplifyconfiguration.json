@@ -12,7 +12,7 @@
   "aws_user_pools_id": "us-east-2_rkBID3aLV",
   "aws_user_pools_web_client_id": "4p0t7s7o94jabr87dr1qa9diul",
   "oauth": {
-    "domain": "alscornholechallenge-staging.auth.us-east-2.amazoncognito.com",
+    "domain": "alscornholechallenge.auth.us-east-2.amazoncognito.com",
     "scope": [
       "phone",
       "email",
@@ -25,24 +25,14 @@
     "responseType": "code"
   },
   "federationTarget": "COGNITO_USER_POOLS",
-  "aws_cognito_username_attributes": [
-    "EMAIL"
-  ],
-  "aws_cognito_social_providers": [
-    "GOOGLE"
-  ],
-  "aws_cognito_signup_attributes": [
-    "EMAIL"
-  ],
+  "aws_cognito_username_attributes": ["EMAIL"],
+  "aws_cognito_social_providers": ["GOOGLE"],
+  "aws_cognito_signup_attributes": ["EMAIL"],
   "aws_cognito_mfa_configuration": "OFF",
-  "aws_cognito_mfa_types": [
-    "SMS"
-  ],
+  "aws_cognito_mfa_types": ["SMS"],
   "aws_cognito_password_protection_settings": {
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": []
   },
-  "aws_cognito_verification_mechanisms": [
-    "EMAIL"
-  ]
+  "aws_cognito_verification_mechanisms": ["EMAIL"]
 }
