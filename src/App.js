@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -19,19 +19,33 @@ const { Header, Content, Footer } = Layout; // Destructuring Layout components
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [scrollToEvents, setScrollToEvents] = useState(false);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Layout
-          className="layout"
-          style={{ minHeight: "100vh", margin: 0, position: "relative" }}
-        >
-          <Header style={{ background: "none", height: "4rem" }}>
-            <Navbar />
+        <Layout className="layout">
+          <Header
+            style={{
+              background: "none",
+              height: "4rem",
+              padding: 0,
+              width: "100%",
+            }}
+          >
+            <Navbar setScrollToEvents={setScrollToEvents} />
           </Header>
           <Content>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    scrollToEvents={scrollToEvents}
+                    setScrollToEvents={setScrollToEvents}
+                  />
+                }
+              />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/event/:event_id" element={<EventDetailsPage />} />
               <Route
@@ -47,7 +61,7 @@ const App = () => {
             </Routes>
           </Content>
           <Footer style={{ padding: 0, margin: 0 }}>
-            <FooterComponent />
+            <FooterComponent setScrollToEvents={setScrollToEvents} />
           </Footer>
         </Layout>
       </Router>

@@ -1,0 +1,56 @@
+import React from "react";
+import { Row, Col, Image, Typography, Button } from "antd";
+
+import logo from "../../assets/site-logo.svg";
+
+const HeroComponent = ({ setScrollToEvents }) => {
+  return (
+    <Row style={{ height: "80vh" }} align="center">
+      <Col
+        span={20}
+        align="center"
+        justify="center"
+        style={{ margin: "auto" }}
+        gap="2rem"
+      >
+        <Image
+          preview={false}
+          src={logo}
+          alt="Hero Image"
+          height="auto"
+          width="90%"
+          style={{
+            maxWidth: "600px",
+            height: "auto",
+            paddingBottom: "2rem",
+          }}
+        />
+        <Typography.Title
+          level={1}
+          style={{
+            width: "100%",
+            textAlign: "center",
+            fontSize: "1.6rem",
+          }}
+        >
+          Cornhole events in Western PA, raising funds for local ALS causes.
+        </Typography.Title>
+        <Typography.Paragraph style={{ width: "100%", textAlign: "center" }}>
+          Explore our upcoming cornhole events and discover more ways to
+          contribute.
+        </Typography.Paragraph>
+
+        <Button
+          type="primary"
+          size="large"
+          style={{ width: "fit-content" }}
+          onClick={() => setScrollToEvents(true)}
+        >
+          See Events
+        </Button>
+      </Col>
+    </Row>
+  );
+};
+
+export default HeroComponent;

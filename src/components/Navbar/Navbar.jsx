@@ -1,49 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, Menu, Flex } from "antd";
 import { Link } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import logo from "../../assets/site-logo.svg";
 
-const Navbar = () => {
+import styles from "./Navbar.module.css";
+import { signIn } from "aws-amplify/auth";
+
+const Navbar = (setScrollToEvents) => {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
-  const navFlex = {
-    height: "4rem",
-    position: "relative",
-    width: "100%",
-  };
+  return (
+    <DesktopNav authStatus={authStatus} setScrollToEvents={setScrollToEvents} />
+  );
+};
 
-  const navLogo = {
-    position: "absolute",
-    left: "3rem",
-  };
+export default Navbar;
 
-  const navStyles = {
-    background: "transparent",
-    border: "none",
-    margnin: "auto",
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
-  };
+const DesktopNav = (authStatus, setScrollToEvents) => {
+  console.log(authStatus.authStatus);
 
   return (
-    <Flex align="middle" style={navFlex} width="100%" justify="center">
-      <Flex xs={24} sm={4} style={navLogo}>
-        <Link to="/">
-          <Image src={logo} height="3rem" preview={false} />
+    <Flex className={styles.navFlexContainer} width="100%" justify="center">
+      <Flex xs={24} sm={4} className={styles.navLogoFlex}>
+        <Link to="/" className={styles.navLogo}>
+          <Image
+            src={logo}
+            className={styles.navLogo}
+            height="3rem"
+            preview={false}
+          />
         </Link>
       </Flex>
 
-      <Menu mode="horizontal" style={navStyles}>
+      <Menu
+        mode="horizontal"
+        className={styles.navMenu}
+        inlineCollapsed={false}
+      >
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="about">
           <Link to="/about">About</Link>
         </Menu.Item>
-        {authStatus === "authenticated" ? (
-          <Menu.Item key="myAccount">
+        <Menu.Item key="events">
+          <Link to="/#events">Events</Link>
+        </Menu.Item>
+        {authStatus.authStatus === "authenticated" ? (
+          <Menu.Item key="account">
             <Link to="/myAccount">My Account</Link>
           </Menu.Item>
         ) : (
@@ -55,5 +60,3 @@ const Navbar = () => {
     </Flex>
   );
 };
-
-export default Navbar;

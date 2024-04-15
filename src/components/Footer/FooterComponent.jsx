@@ -1,12 +1,16 @@
 import React from "react";
-import { Col, Flex, Image, Row, Typography } from "antd";
+import { Col, Flex, Image, Row, Typography, Button } from "antd";
 import { Link } from "react-router-dom";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import logo from "../../assets/site-logo.svg";
 
 import styles from "./Footer.module.css";
 
-const FooterComponent = () => {
+const FooterComponent = ({ setScrollToEvents }) => {
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+
+  console.log(authStatus);
   return (
     <Flex
       style={{
@@ -25,14 +29,21 @@ const FooterComponent = () => {
         <Col xl={4} lg={4} sm={6} xs={20}>
           <Flex vertical>
             <Typography.Text strong>Site Directory</Typography.Text>
-            <Typography.Link>Events</Typography.Link>
+            <Typography.Link onClick={() => setScrollToEvents(true)}>
+              Events
+            </Typography.Link>
             <Link to="/about">
               <Typography.Link>About</Typography.Link>
             </Link>
-            <Link to="/signin">
-              <Typography.Link>Sign In</Typography.Link>
-            </Link>
-            <Typography.Link>Donate</Typography.Link>
+            {authStatus === "authenticated" ? (
+              <Link to="/myAccount">
+                <Typography.Link>My Account</Typography.Link>
+              </Link>
+            ) : (
+              <Link to="/signin">
+                <Typography.Link>Sign In</Typography.Link>
+              </Link>
+            )}
           </Flex>
         </Col>
         <Col xl={4} lg={4} sm={6} xs={20}>

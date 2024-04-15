@@ -1,212 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useRef, useEffect } from "react";
+import { throttle } from "lodash";
+import { useLocation } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import {
-  Card,
-  List,
-  Button,
-  Typography,
-  Flex,
-  Row,
-  Col,
-  Skeleton,
-  Avatar,
-  Image,
-  Grid,
-} from "antd";
-import dayjs from "dayjs";
-import {
-  IoLocationOutline,
-  IoCheckmarkCircleOutline,
-  IoLockClosedOutline,
-  IoOpenOutline,
-} from "react-icons/io5";
+import { Button, Typography, Flex, Row, Col, Image, Skeleton } from "antd";
+import { IoOpenOutline } from "react-icons/io5";
 
-import logo from "../../assets/site-logo.svg";
 import mattsTeam from "../../assets/ceo-soak-team-matt.jpeg";
 import ceoSoakImage from "../../assets/CEO_Soak_logo_with_ALSA_Logo.png";
 
-import useListEvents from "../../hooks/useListEvents";
-
 import styles from "./HomePage.module.css";
+import HeroComponent from "../../components/HomePage/HeroComponent";
+import EventsComponent from "../../components/HomePage/EventsComponent";
 
 const { Title, Paragraph } = Typography;
 
-const HomePage = () => {
-  const navigate = useNavigate();
-
+const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
+  const location = useLocation();
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
-  const { events } = useListEvents();
-
-  // return date/time value like so: 2024-04-12T12:00:00
-  const eventDateTime = (event) => {
-    return `${event.event_date}T${event.event_time}`;
-  };
-
-  const formattedStartTime = (startTime) => {
-    // Creating a full date-time string with a fixed date
-    const dateTime = `2000-01-01T${startTime}:00`;
-
-    // Using Day.js to format this date-time string into 12-hour time format
-    return dayjs(dateTime).format("h:mm A");
-  };
-
-  const currentDate = new Date();
+  const eventsUseRef = useRef(null);
 
   useEffect(() => {
-    // sessionStorage.removeItem("postSignInRedirect");
-    // extract session storage
-    const storedSessionState = sessionStorage.getItem("postSignInRedirect");
-
-    if (storedSessionState) {
-      const sessionState = JSON.parse(storedSessionState);
-
-      const pathname = sessionState?.pathname;
-      const event = sessionState.state?.event;
-
-      const navigateToRegistration = () =>
-        navigate("/registration", { state: { event } });
-      if (
-        pathname === "/registration" &&
-        event &&
-        authStatus === "authenticated"
-      ) {
-        console.log("navigating to registration page");
-        navigateToRegistration();
-        // clear session storage
-        sessionStorage.removeItem("postSignInRedirect");
-      }
+    if (scrollToEvents) {
+      eventsUseRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [authStatus]);
+  }, [scrollToEvents]);
+
+  useEffect(() => {
+    if (location.hash === "#events" && eventsUseRef.current) {
+      eventsUseRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const onScroll = throttle(() => {
+      console.log("Window scrolled!", window.scrollY);
+      setScrollToEvents(false);
+    }, 10000); // Only fire once per 100 milliseconds
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   return (
     <Flex vertical>
-      <Row style={{ height: "80vh" }} align="center">
-        <Col
-          span={20}
-          align="center"
-          justify="center"
-          style={{ margin: "auto" }}
-          gap="2rem"
-        >
-          <Image
-            preview={false}
-            src={logo}
-            alt="Hero Image"
-            height="auto"
-            width="90%"
-            style={{
-              maxWidth: "600px",
-              height: "auto",
-              paddingBottom: "2rem",
-            }}
-          />
-          <Typography.Title
-            level={1}
-            style={{
-              width: "100%",
-              textAlign: "center",
-              fontSize: "1.6rem",
-            }}
-          >
-            Cornhole events in Western PA, raising funds for local ALS causes.
-          </Typography.Title>
-          <Typography.Paragraph style={{ width: "100%", textAlign: "center" }}>
-            Explore our upcoming cornhole events and discover more ways to
-            contribute.
-          </Typography.Paragraph>
-
-          <Button type="primary" size="large" style={{ width: "fit-content" }}>
-            See Events
-          </Button>
-        </Col>
-      </Row>
-
-      <Row
-        className={styles.eventCardRow}
-        gutter={[16, 16]}
-        justify="center"
-        style={{
-          backgroundColor: "lightgray",
-        }}
-      >
-        <Col sm={19} md={18} lg={22} xl={22}>
-          <Title style={{ margin: 0, fontSize: "1.6rem" }} level={2}>
-            Upcoming Events
-          </Title>
-        </Col>
-
-        {events?.map((event) => (
-          <Col
-            sm={20}
-            md={20}
-            lg={8}
-            xl={8}
-            style={{ width: "100%", height: "100%" }}
-          >
-            <Card
-              className={styles.eventCard}
-              style={{
-                backgroundColor: "white",
-                borderRadius: 8,
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                margin: "1rem",
-              }}
-            >
-              <Paragraph>
-                {dayjs(event.event_date).format("ddd, MMM d, YYYY")} @{" "}
-                {formattedStartTime(event.start_time)}
-              </Paragraph>
-              <Title level={5}>{event.name}</Title>
-              <Flex vertical gap=".5rem">
-                <Paragraph
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".5rem",
-                    margin: 0,
-                  }}
-                >
-                  <IoLocationOutline color="blue" />
-                  {event.location}
-                </Paragraph>
-                <Paragraph
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".5rem",
-                    margin: 0,
-                  }}
-                >
-                  {eventDateTime(event) < currentDate ? (
-                    <>
-                      <IoLockClosedOutline color="red" /> Registration Closed
-                    </>
-                  ) : (
-                    <>
-                      <IoCheckmarkCircleOutline color="green" /> Registration
-                      Open
-                    </>
-                  )}
-                </Paragraph>
-              </Flex>
-              <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginTop: "3rem",
-                }}
-              >
-                <Link to={`/event/${event.event_id}`}>
-                  <Button block>View Details</Button>
-                </Link>
-              </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      <HeroComponent setScrollToEvents={setScrollToEvents} />
+      <EventsComponent authStatus={authStatus} eventsUseRef={eventsUseRef} />
 
       <Row className={styles.aboutSectionRow}>
         <Row align="space-around" className={styles.aboutRow} justify="center">
@@ -257,11 +99,11 @@ const HomePage = () => {
               Bringing people together
             </Typography.Title>
             <Typography.Paragraph style={{}}>
-              During the summer of 2024, we are specifically reasing money to
-              support Matt Henderson in the 2024 CEO Soak. Matt is the CEO of
+              During the summer of 2024, we're raising money to support Matt
+              Henderson in the 2024 CEO Soak. Matt is the Founder & CEO of
               Henderson Construction Fabrics and Hope For Hispaniola. Matt has
-              been battling ALS since 2021 and is raising participaing in the
-              CEO Soak to raise funds for ALS research and support.
+              been battling ALS since 2021 and is participaing in the CEO Soak
+              to raise funds for ALS research and support.
             </Typography.Paragraph>
           </Col>
           <Col
