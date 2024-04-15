@@ -4,6 +4,7 @@ import AuthProvider from "./AuthProvider";
 import { ConfigProvider } from "antd";
 
 import "./App.css";
+import "./global.css";
 
 import { Amplify } from "aws-amplify";
 import config from "./amplifyconfiguration.json";

@@ -1,0 +1,44 @@
+.eventCardRow {
+  padding: 4rem;
+}
+
+@media (max-width: 768px) {
+  .eventCardRow {
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+  }
+}
+
+/* write media querues for card compoennt, in dsektop should show max of 3 in a line. in tablet and mobile, should show 1 card per line */
+.card {
+  min-width: 200px;
+  max-width: 400px;
+  min-height: 100%;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Home Page About Section */
+.aboutSectionRow {
+  margin: 6rem 4rem 6rem 4rem;
+  gap: 6rem;
+}
+
+@media (max-width: 768px) {
+  .aboutSectionRow {
+    margin: 3rem 0 3rem 0;
+    align-content: center;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutRow {
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,4 @@
+/* global.css */
+.ant-row > div {
+  max-width: none !important; /* Overrides the max-width for all divs within .ant-row */
+}

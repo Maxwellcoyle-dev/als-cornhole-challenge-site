@@ -1,0 +1,10 @@
+.footerRow {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .footerRow {
+    row-gap: 2rem;
+  }
+}

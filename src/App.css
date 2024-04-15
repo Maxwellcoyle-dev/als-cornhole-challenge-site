@@ -131,19 +131,3 @@ button:disabled {
     min-width: initial;
   }
 }
-
-
-/* ANTD OVERRIDES */
-
-.ant-layout-header {
-  padding: 0;
-  padding-left: 2rem;
-}
-
-.ant-row {
-  gap: 4rem;
-}
-
-.ant-row > div {
- max-width: 25rem !important;
-}

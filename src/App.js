@@ -4,14 +4,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { Layout } from "antd"; // Importing Layout from Ant Design
 
-import Navbar from "./components/Navbar.jsx";
-import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
 import AboutPage from "./pages/AboutPage";
 import EventDetailsPage from "./pages/EventDetailsPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage";
 import SigninPage from "./pages/SigninPage.jsx";
 import MyAccountPage from "./pages/MyAccountPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import FooterComponent from "./components/Footer/FooterComponent.jsx";
 
 const { Header, Content, Footer } = Layout; // Destructuring Layout components
 
@@ -21,8 +22,11 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Layout className="layout" style={{ minHeight: "100vh", margin: 0 }}>
-          <Header style={{ background: "none" }}>
+        <Layout
+          className="layout"
+          style={{ minHeight: "100vh", margin: 0, position: "relative" }}
+        >
+          <Header style={{ background: "none", height: "4rem" }}>
             <Navbar />
           </Header>
           <Content>
@@ -42,8 +46,8 @@ const App = () => {
               <Route path="/myAccount" element={<MyAccountPage />} />
             </Routes>
           </Content>
-          <Footer style={{ textAlign: "center", fontSize: ".75rem" }}>
-            Cornhole Tournaments ©2024 Created for a Cause
+          <Footer style={{ padding: 0, margin: 0 }}>
+            <FooterComponent />
           </Footer>
         </Layout>
       </Router>
