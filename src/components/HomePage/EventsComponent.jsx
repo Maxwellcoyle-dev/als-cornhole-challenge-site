@@ -63,7 +63,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
     <Row
       ref={eventsUseRef}
       className={styles.eventCardRow}
-      gutter={[16, 16]}
+      gutter={[32, 16]}
       justify="center"
       style={{
         backgroundColor: "lightgray",
@@ -101,7 +101,6 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                 backgroundColor: "white",
                 borderRadius: 8,
                 boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                margin: "1rem",
                 width: "100%",
               }}
             >
