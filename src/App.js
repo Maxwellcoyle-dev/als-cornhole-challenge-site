@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import { Layout } from "antd"; // Importing Layout from Ant Design
 
@@ -21,6 +22,8 @@ const queryClient = new QueryClient();
 const App = () => {
   const [scrollToEvents, setScrollToEvents] = useState(false);
 
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
@@ -33,7 +36,10 @@ const App = () => {
               width: "100%",
             }}
           >
-            <Navbar setScrollToEvents={setScrollToEvents} />
+            <Navbar
+              setScrollToEvents={setScrollToEvents}
+              authStatus={authStatus}
+            />
           </Header>
           <Content>
             <Routes>

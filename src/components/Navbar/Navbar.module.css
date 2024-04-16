@@ -1,53 +1,33 @@
-/* Navbar.module.css */
-
-.navFlexContainer {
-  position: relative;
+.navBar {
+  height: 4rem;
   width: 100%;
-  height: 4.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: white;
 }
 
-.navLogoFlex {
+.logoDiv {
   position: absolute;
   left: 3rem;
 }
 
-.navMenu {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  background: none;
-  border: 0;
-  font-weight: 600;
-}
-
-.desktopMenu {
-  display: none; /* This needs to be visible on desktop */
-}
-
-.mobileMenuButton {
-  display: none; /* This needs to be visible only on mobile */
+.navMenuIconDiv {
   position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 3rem;
+  top: 0.5rem;
 }
 
-/* Correcting media queries */
-@media (min-width: 768px) {
-  .desktopMenu {
-    display: block; /* Ensuring menu is visible on desktop */
-  }
-  .mobileMenuButton {
-    display: none; /* Ensuring button is hidden on desktop */
-  }
+.menuIcon {
+  font-size: 3rem;
 }
 
-@media (max-width: 767px) {
-  .desktopMenu {
-    display: none; /* Ensuring menu is hidden on mobile */
-  }
-  .mobileMenuButton {
-    display: block; /* Ensuring button is visible on mobile */
+.navMenuSpan {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .navMenuIconDiv {
+    display: none;
   }
 }
