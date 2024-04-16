@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/site-logo.svg";
 
 import styles from "./Navbar.module.css";
+import { set } from "lodash";
 
 const Navbar = ({ authStatus = "authenticated" }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -43,7 +44,12 @@ const Navbar = ({ authStatus = "authenticated" }) => {
           />
         </div>
       ) : (
-        <AppMenu key={authStatus} isInline={false} authStatus={authStatus} />
+        <AppMenu
+          key={authStatus}
+          isInline={false}
+          authStatus={authStatus}
+          setOpenMenu={setOpenMenu}
+        />
       )}
 
       <Drawer
@@ -57,7 +63,12 @@ const Navbar = ({ authStatus = "authenticated" }) => {
         placement="right"
         className={styles.drawer}
       >
-        <AppMenu key={authStatus} isInline authStatus={authStatus} />
+        <AppMenu
+          key={authStatus}
+          isInline
+          authStatus={authStatus}
+          setOpenMenu={setOpenMenu}
+        />
       </Drawer>
     </div>
   );
@@ -65,13 +76,16 @@ const Navbar = ({ authStatus = "authenticated" }) => {
 
 export default Navbar;
 
-const AppMenu = ({ isInline = false, authStatus }) => {
+const AppMenu = ({ isInline = false, authStatus, setOpenMenu }) => {
   return (
     <Menu
       mode={isInline ? "inline" : "horizontal"}
       inlineCollapsed={false}
       style={{ backgroundColor: "transparent" }}
       bodyStyle={{ backgroundColor: "none" }}
+      onSelect={() => {
+        setOpenMenu(false);
+      }}
     >
       <Menu.Item key="home">
         <Link to="/">Home</Link>
