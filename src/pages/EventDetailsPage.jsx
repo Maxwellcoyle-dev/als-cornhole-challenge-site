@@ -2,10 +2,21 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { registrationInfo } from "../registrationInfo";
 
-import { Typography, Button, List, Flex, Collapse, Divider, Card } from "antd";
+import {
+  Typography,
+  Button,
+  List,
+  Collapse,
+  Divider,
+  Row,
+  Col,
+  Card,
+  Form,
+  Switch,
+} from "antd";
 
 // components
-import MapComponent from "../components/MapComponent";
+import MapComponent from "../components/Map/MapComponent";
 
 // Hooks
 import useListEvents from "../hooks/useListEvents";
@@ -35,45 +46,84 @@ const EventDetailsPage = () => {
   }
 
   return (
-    <Flex vertical style={{ margin: "1rem 5rem" }}>
-      <Card>
-        <Flex>
-          <Flex vertical>
-            <Title>{event?.name}</Title>
-            <Paragraph>Date: {event?.event_date}</Paragraph>
-            <Paragraph>Location: {event?.location}</Paragraph>
-            <Paragraph>Start Time: {event?.start_time}</Paragraph>
-            <Paragraph>Cost: ${event?.cost}</Paragraph>
-          </Flex>
-          <MapComponent />
-        </Flex>
-      </Card>
+    <Row
+      vertical
+      style={{ margin: "4rem 0", padding: 0 }}
+      justify="space-around"
+      gutter={[16, 16]} // [horizontal, vertical]}
+    >
+      <Col vertical xl={10} lg={11} md={20} sm={20} xs={22}>
+        <Card>
+          <Title level={1} style={{ fontSize: "2rem" }}>
+            {event?.name}
+          </Title>
+          <Paragraph>Date: {event?.event_date}</Paragraph>
+          <Paragraph>Location: {event?.location}</Paragraph>
+          <Paragraph>Start Time: {event?.start_time}</Paragraph>
+          <Paragraph>Cost: ${event?.cost}</Paragraph>
+        </Card>
+      </Col>
+      <Col
+        xl={10}
+        lg={11}
+        md={20}
+        sm={20}
+        xs={22}
+        style={{ minHeight: "15rem", minWidth: "20rem" }}
+      >
+        <MapComponent />
+      </Col>
 
-      <Card>
-        <Title level={2}>Event Information</Title>
+      <Col xl={10} xxl={10}>
+        <Title level={3}>Event Information</Title>
         <Paragraph>{event?.description}</Paragraph>
-      </Card>
+      </Col>
 
-      <Card>
-        <Title level={2}>Registration Details</Title>
+      <Col xl={10}>
+        <Title level={3}>Registration Details</Title>
         <Paragraph>{registrationInfo.introDescription}</Paragraph>
-        <Collapse>
-          {registrationInfo.registrationOptions.map((option, index) => (
-            <Panel header={option.optionName} key={index}>
-              <Paragraph>
-                <Text strong>Includes:</Text>
-              </Paragraph>
-              <List
-                split={false}
-                dataSource={option.optionDescriptionItems.includes}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-              />
-              <Divider />
-              <Paragraph>Cost: ${option.optionDescriptionItems.cost}</Paragraph>
-            </Panel>
-          ))}
-        </Collapse>
-      </Card>
+      </Col>
+
+      <Col xl={10}>
+        <Form>
+          <Row>
+            <Col
+              span={12}
+              align="center"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-around",
+              }}
+            >
+              <Title level={4} style={{ padding: 0, margin: 0 }}>
+                Team
+              </Title>
+            </Col>
+            <Col span={12}>
+              <Form.Item name="team" valuePropName="checked">
+                <Switch style={{ width: "2rem" }} />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </Col>
+      <Collapse>
+        {registrationInfo.registrationOptions.map((option, index) => (
+          <Panel header={option.optionName} key={index}>
+            <Paragraph>
+              <Text strong>Includes:</Text>
+            </Paragraph>
+            <List
+              split={false}
+              dataSource={option.optionDescriptionItems.includes}
+              renderItem={(item) => <List.Item>{item}</List.Item>}
+            />
+            <Divider />
+            <Paragraph>Cost: ${option.optionDescriptionItems.cost}</Paragraph>
+          </Panel>
+        ))}
+      </Collapse>
 
       <Title level={2}>Payment Options</Title>
       <List
@@ -113,7 +163,7 @@ const EventDetailsPage = () => {
           />
         </Panel>
       </Collapse>
-    </Flex>
+    </Row>
   );
 };
 

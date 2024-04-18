@@ -1,0 +1,47 @@
+.mapDiv {
+  display: flex;
+  position: relative;
+  height: "15rem";
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-color: transparent;
+}
+/* on hover */
+.mapDiv:hover {
+  /* partially transparent gray background color*/
+  background-color: black !important;
+}
+
+.textDiv {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: rgb(121, 121, 121);
+  font-weight: bold;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* I want to smooth transition in and out for the hover state */
+  transition: background-color 0.5s;
+}
+
+.textDiv:hover {
+  /* partially transparent gray background color*/
+  background-color: rgba(0, 0, 0, 0.5);
+  /* change the mouse state for the link */
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .textDiv {
+    font-size: 1.2rem;
+    gap: 0;
+    flex-direction: column-reverse;
+  }
+}
