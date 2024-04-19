@@ -38,7 +38,12 @@ const MapComponent = ({
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
       <div
-        style={{ height: "100%", width: "100%" }}
+        style={{
+          height: "100%",
+          width: "100%",
+          maxWidth: "700px",
+          minHeight: "300px",
+        }}
         onClick={handleMapClick}
         className={styles.mapDiv}
       >
