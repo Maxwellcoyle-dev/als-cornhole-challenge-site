@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { registrationInfo, includedItems } from "../../registrationInfo";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import {
   Typography,
@@ -11,7 +12,18 @@ import {
   Row,
   Col,
   Card,
+  Image,
 } from "antd";
+import {
+  IoArrowDownOutline,
+  IoCheckboxOutline,
+  IoCalendarOutline,
+  IoLocationOutline,
+  IoTimeOutline,
+  IoPricetagOutline,
+} from "react-icons/io5";
+
+import cornholeBoard from "../../assets/cornholeboard.jpg";
 
 // components
 import MapComponent from "../../components/Map/MapComponent";
@@ -21,20 +33,13 @@ import useListEvents from "../../hooks/useListEvents";
 import useListEventRegistrations from "../../hooks/useListEventRegistrations";
 
 import styles from "./EventDetailsPage.module.css";
-import {
-  IoArrowDownOutline,
-  IoCheckboxOutline,
-  IoCalendarOutline,
-  IoLocationOutline,
-  IoTimeOutline,
-  IoPricetagOutline,
-} from "react-icons/io5";
-import { max } from "lodash";
 
 const { Title, Paragraph, Text } = Typography;
 const { Panel } = Collapse;
 
 const EventDetailsPage = () => {
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
+
   const navigate = useNavigate();
   const { event_id } = useParams();
   const { events, isPending, isError } = useListEvents();
@@ -42,9 +47,9 @@ const EventDetailsPage = () => {
   const event = events?.find((event) => event.event_id === event_id);
   const { eventRegistrations } = useListEventRegistrations(event_id);
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0); // Scrolls to the top of the page
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   useEffect(() => {
     console.log("eventRegistrations", eventRegistrations);
@@ -125,26 +130,34 @@ const EventDetailsPage = () => {
           sm={20}
           xs={22}
           className={styles.mapSectionCol}
-          style={{ maxWidth: 600 }}
+          justify="center"
         >
           <MapComponent />
         </Col>
-      </Row>
-      <Row>
+
         <Col
-          xl={24}
+          xl={20}
+          lg={20}
+          md={20}
+          sm={20}
+          xs={22}
           className={styles.sectionTwoCol}
-          style={{ paddingBottom: "2rem" }}
+          justify="center"
+          alignItems="center"
+          style={{ paddingBottom: "2rem", width: "100%" }}
         >
-          <div className={styles.sectionFlexDiv} style={{ maxWidth: 1200 }}>
+          <div className={styles.sectionFlexDiv}>
             <Title level={2} className={styles.level2SectionTitle}>
               Basic Info
             </Title>
-            <Paragraph style={{ width: "90%" }} className={styles.textStyle}>
+            <Paragraph
+              style={{ width: "90%", paddingBottom: ".75rem" }}
+              className={styles.textStyle}
+            >
               The proceeds from this event will be donated directly to the ALS
               Association supporting Matt Henderson in the 2024 CEO Soak.
             </Paragraph>
-            <Paragraph className={styles.textStyle}>
+            <Paragraph style={{ width: "90%" }} className={styles.textStyle}>
               This event is designed to bring people together, create some fun
               competition, and support an important cause. All skill levels are
               welcome. Depending on the number of registrations we may create 2
@@ -152,136 +165,164 @@ const EventDetailsPage = () => {
             </Paragraph>
           </div>
         </Col>
-        <Col xl={24} className={styles.sectionThreeCol}>
-          <Title level={2} className={styles.level2SectionTitle}>
-            Rules
-          </Title>
+        <Col
+          xl={20}
+          lg={20}
+          md={20}
+          sm={20}
+          xs={22}
+          className={styles.sectionThreeCol}
+          justify="center"
+          alignItems="center"
+          style={{ paddingBottom: "2rem", width: "100%" }}
+        >
+          <div className={styles.sectionFlexDiv}>
+            <Title level={2} className={styles.level2SectionTitle}>
+              Registration
+            </Title>
+            <Paragraph style={{ width: "90%" }} className={styles.textStyle}>
+              Registration is open for teams (max 3 per team) and individuals
+              (partner draw). $50 for team registration. Max 3 players per team.
+              $25 for individual registration. We will place you on a team.
+            </Paragraph>
+          </div>
         </Col>
-        <Col xl={24} className={styles.sectionFourCol}>
-          <Title level={2} className={styles.level2SectionTitle}>
-            What's included
-          </Title>
-          <Paragraph className={styles.textStyle}>
-            Registering for this event enters you into 2 events. The{" "}
-            <strong> Double Elimination Team Tournament</strong> and the{" "}
-            <strong>One Shot Challenge</strong>.
-          </Paragraph>
-          <Card className={styles.card}>
-            {includedItems.map((option, index) => (
-              <Card
-                type="inner"
-                className={styles.innerCard}
-                title={
-                  <Title style={{ fontSize: "24px" }} level={5}>
-                    {option.optionName}
-                  </Title>
-                }
-                key={index}
-              >
-                <List
-                  split={false}
-                  dataSource={option.descipriton}
-                  renderItem={(item) => (
-                    <List.Item className={styles.innerCardListItem}>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "1rem",
-                        }}
-                      >
-                        <IoCheckboxOutline
+
+        <Col
+          xl={20}
+          lg={20}
+          md={20}
+          sm={20}
+          xs={22}
+          className={styles.sectionThreeCol}
+        >
+          <div className={styles.sectionFlexDiv}>
+            <Title level={2} className={styles.level2SectionTitle}>
+              Rules
+            </Title>
+            <Paragraph className={styles.textStyle}>
+              The rules for this event are simple. The{" "}
+              <strong>Double Elimination Team Tournament</strong> will be played
+              as follows:
+            </Paragraph>
+          </div>
+        </Col>
+
+        <Col
+          xl={20}
+          lg={20}
+          md={20}
+          sm={20}
+          xs={22}
+          className={styles.sectionFourCol}
+        >
+          <div className={styles.sectionFlexDiv}>
+            <Title level={2} className={styles.level2SectionTitle}>
+              What's included
+            </Title>
+            <Paragraph className={styles.textStyle}>
+              Registering for this event enters you into 2 events. The{" "}
+              <strong> Double Elimination Team Tournament</strong> and the{" "}
+              <strong>One Shot Challenge</strong>.
+            </Paragraph>
+          </div>
+        </Col>
+        <Col xl={20} lg={20} md={20} sm={20} xs={22}>
+          <div className={styles.sectionFlexDiv}>
+            <Card className={styles.card}>
+              {includedItems.map((option, index) => (
+                <Card
+                  type="inner"
+                  className={styles.innerCard}
+                  title={
+                    <Title style={{ fontSize: "24px" }} level={5}>
+                      {option.optionName}
+                    </Title>
+                  }
+                  key={index}
+                >
+                  <List
+                    split={false}
+                    dataSource={option.descipriton}
+                    renderItem={(item) => (
+                      <List.Item className={styles.innerCardListItem}>
+                        <div
                           style={{
-                            width: "1rem",
-                            minHeight: "1rem",
-                            minWidth: "1rem",
-                            color: "green",
-                          }}
-                        />
-                        <Paragraph
-                          style={{
-                            margin: 0,
-                            padding: 0,
-                            textWrap: "wrap",
-                            fontSize: "21px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "1rem",
                           }}
                         >
-                          {item}
-                        </Paragraph>
-                      </div>
-                    </List.Item>
-                  )}
-                />
-              </Card>
-            ))}
-          </Card>
+                          <IoCheckboxOutline
+                            style={{
+                              width: "1rem",
+                              minHeight: "1rem",
+                              minWidth: "1rem",
+                              color: "green",
+                            }}
+                          />
+                          <Paragraph
+                            style={{
+                              margin: 0,
+                              padding: 0,
+                              textWrap: "wrap",
+                              fontSize: "21px",
+                            }}
+                          >
+                            {item}
+                          </Paragraph>
+                        </div>
+                      </List.Item>
+                    )}
+                  />
+                </Card>
+              ))}
+            </Card>
+          </div>
         </Col>
 
-        <Col xl={20}>
-          <Card collapsible="disabled">
-            {registrationInfo.registrationOptions.map((option, index) => (
-              <Card type="inner" header={option.optionName} key={index}>
-                <Paragraph>
-                  <Text strong>Includes:</Text>
-                </Paragraph>
-                <List
-                  split={false}
-                  dataSource={option.optionDescriptionItems.includes}
-                  className={styles.textStyle}
-                  renderItem={(item) => <List.Item>{item}</List.Item>}
-                />
-                <Divider />
-                <Paragraph>
-                  Cost: ${option.optionDescriptionItems.cost}
-                </Paragraph>
-              </Card>
-            ))}
-          </Card>
+        <Col
+          xl={8}
+          lg={8}
+          md={10}
+          sm={10}
+          xs={20}
+          className={[styles.sectionRegisterCol, styles.imageCol]}
+        >
+          <Image src={cornholeBoard} alt="Cornhole Board" />
         </Col>
-
-        <Title level={2}>Payment Options</Title>
-        <List
-          itemLayout="vertical"
-          dataSource={registrationInfo.PaymentOptions}
-          renderItem={(option, index) => (
-            <List.Item>
-              <List.Item.Meta
-                title={option.optionName}
-                description={option.optionDescription}
-              />
+        <Col
+          xl={8}
+          lg={8}
+          md={16}
+          sm={20}
+          xs={20}
+          className={styles.sectionRegisterCol}
+        >
+          <div className={styles.registrationFlexDiv}>
+            <Title level={2} style={{ textAlign: "center" }}>
+              Register and save your spot today.
+            </Title>
+            {authStatus === "authenticated" ? (
               <Button
                 type="primary"
-                style={{ width: "auto" }}
-                onClick={() =>
-                  navigate("/registration", {
-                    state: {
-                      event,
-                      method: index === 0 ? "online" : "atEvent",
-                    },
-                  })
-                }
+                size="large"
+                className={styles.registerButton}
               >
-                {index === 0 ? "Register" : "Tell Us You're Coming"}
+                Register
               </Button>
-            </List.Item>
-          )}
-        />
-
-        <Title level={3}>
-          Registered Teams: {eventRegistrations?.length}/20
-        </Title>
-        <Collapse bordered={false}>
-          <Panel header="Team Names" key="1">
-            <List
-              dataSource={eventRegistrations}
-              renderItem={(team) => (
-                <List.Item>
-                  <Text strong>{team?.team_name}</Text>
-                </List.Item>
-              )}
-            />
-          </Panel>
-        </Collapse>
+            ) : (
+              <Button
+                type="primary"
+                size="large"
+                className={styles.registerButton}
+                onClick={() => navigate("/login")}
+              >
+                Create an Account or Login to Register <IoArrowDownOutline />
+              </Button>
+            )}
+          </div>
+        </Col>
       </Row>
     </>
   );

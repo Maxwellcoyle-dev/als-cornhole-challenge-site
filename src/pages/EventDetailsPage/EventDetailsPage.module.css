@@ -1,4 +1,4 @@
-#eventDetailsPage .eventsDetailsPage {
+#eventDetailsPage {
   max-width: 1400px !important;
   display: flex;
   justify-content: center !important;
@@ -69,6 +69,9 @@
 .mapSectionCol {
   padding: 4rem 0 !important;
   max-width: 700px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
 }
 
 @media (max-width: 991px) {
@@ -79,7 +82,12 @@
 
 .sectionTwoCol {
   padding: 4rem 0 2rem 0 !important;
-  background-color: #f9f9f9;
+}
+
+@media (max-width: 991px) {
+  .sectionTwoCol {
+    padding: 2rem 0 2rem 0 !important;
+  }
 }
 
 .sectionFlexDiv {
@@ -109,10 +117,8 @@
 .level2SectionTitle {
   font-size: 28px !important;
   font-weight: 600 !important;
-
   padding: 0 0 1rem 0 !important;
   margin: 0 !important;
-
   color: #228b22 !important;
 }
 
@@ -133,53 +139,45 @@
   margin: 0 !important;
 }
 
-/* Section Two */
-.collapse {
-  border-radius: 8px;
-  border: 1px solid #d9d9d9;
-  margin-bottom: 16px;
-}
-
-.collapsePanelHeader {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333;
-}
-
-.collapseListItem {
-  padding: 8px 16px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
 /* Last item border removal */
 .custom-list-item:last-child {
   border-bottom: none;
 }
 
 .sectionThreeCol {
-  padding: 0 6rem 2rem 6rem !important;
-  background-color: #f9f9f9;
+  padding: 0 0 2rem 0 !important;
 }
 
 .sectionFourCol {
-  padding: 0 6rem 4rem 6rem !important;
-  background-color: #f9f9f9;
+  padding: 0 0 2rem 0 !important;
 }
 
-.sectionFourCol .card {
-  width: 100%;
-}
-
-.sectionFourCol .innerCard {
-  margin: 0 0 2rem 0;
-}
-
-.sectionFourCol .innerCard .cardTitle {
-  margin: 0;
+.card {
+  margin-top: 1rem;
+  padding-bottom: 0;
+  display: flex;
 }
 
 .innerCardListItem {
   padding: 0.5rem 2rem !important;
   border-bottom: 1px solid #f0f0f0;
   font-size: 21px;
+}
+
+.sectionRegisterCol {
+  margin: 4rem 0 6rem 0 !important;
+}
+
+.registrationFlexDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .imageCol {
+    display: none;
+  }
 }
