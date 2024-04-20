@@ -59,6 +59,11 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
     }
   }, [authStatus]);
 
+  const handleViewEventDetailsClick = (eventId) => {
+    console.log("eventId", eventId);
+    navigate(`/event/${eventId}`);
+  };
+
   return (
     <Row
       ref={eventsUseRef}
@@ -149,9 +154,18 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                   marginTop: "3rem",
                 }}
               >
-                <Link to={`/event/${event.event_id}`}>
-                  <Button block>View Details</Button>
-                </Link>
+                <Button
+                  onClick={() => handleViewEventDetailsClick(event.event_id)}
+                  block
+                  type="default"
+                  style={{
+                    borderColor: "rgb(22, 119, 255)",
+                    color: "rgb(22, 119, 255)",
+                  }}
+                  size="large"
+                >
+                  View Details
+                </Button>
               </div>
             </Card>
           )}
