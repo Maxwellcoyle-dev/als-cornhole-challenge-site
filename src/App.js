@@ -5,7 +5,7 @@ import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import { Layout } from "antd"; // Importing Layout from Ant Design
 
-import Navbar from "./components/Navbar/Navbar.jsx";
+import { Navbar } from "./components/Navbar/Navbar.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import AboutPage from "./pages/AboutPage";
 import EventDetailsPage from "./pages/EventDetailsPage/EventDetailsPage.jsx";

@@ -3,6 +3,8 @@ import { Row, Col, Image, Typography, Button } from "antd";
 
 import logo from "../../assets/site-logo.svg";
 
+import styles from "../../pages/HomePage/HomePage.module.css";
+
 const HeroComponent = ({ setScrollToEvents }) => {
   return (
     <Row style={{ height: "80vh" }} align="center">
@@ -27,6 +29,7 @@ const HeroComponent = ({ setScrollToEvents }) => {
         />
         <Typography.Title
           level={1}
+          className={styles.levelOneFont}
           style={{
             width: "100%",
             textAlign: "center",
@@ -35,7 +38,10 @@ const HeroComponent = ({ setScrollToEvents }) => {
         >
           Cornhole events in Western PA, raising funds for local ALS causes.
         </Typography.Title>
-        <Typography.Paragraph style={{ width: "100%", textAlign: "center" }}>
+        <Typography.Paragraph
+          style={{ width: "100%", textAlign: "center" }}
+          className={styles.levelFourFont}
+        >
           Explore our upcoming cornhole events and discover more ways to
           contribute.
         </Typography.Paragraph>
@@ -43,7 +49,8 @@ const HeroComponent = ({ setScrollToEvents }) => {
         <Button
           type="primary"
           size="large"
-          style={{ width: "fit-content" }}
+          className={styles.eventsButton}
+          style={{ width: "fit-content", fontSize: "1.5rem", height: "3rem" }}
           onClick={() => setScrollToEvents(true)}
         >
           See Events

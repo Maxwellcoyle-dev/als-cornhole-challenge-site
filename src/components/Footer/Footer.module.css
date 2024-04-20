@@ -8,3 +8,11 @@
     row-gap: 2rem;
   }
 }
+
+.textStyle {
+  color: #228b22 !important;
+}
+
+.textStyle:hover {
+  color: #228b22a9 !important;
+}
