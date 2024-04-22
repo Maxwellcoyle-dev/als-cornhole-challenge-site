@@ -29,19 +29,28 @@ const FooterComponent = ({ setScrollToEvents }) => {
         <Col xl={4} lg={4} sm={6} xs={20}>
           <Flex vertical>
             <Typography.Text strong>Site Directory</Typography.Text>
-            <Typography.Link onClick={() => setScrollToEvents(true)}>
+            <Typography.Link
+              onClick={() => setScrollToEvents(true)}
+              className={styles.textStyle}
+            >
               Events
             </Typography.Link>
             <Link to="/about">
-              <Typography.Link>About</Typography.Link>
+              <Typography.Link className={styles.textStyle}>
+                About
+              </Typography.Link>
             </Link>
             {authStatus === "authenticated" ? (
               <Link to="/myAccount">
-                <Typography.Link>My Account</Typography.Link>
+                <Typography.Link className={styles.textStyle}>
+                  My Account
+                </Typography.Link>
               </Link>
             ) : (
               <Link to="/signin">
-                <Typography.Link>Sign In</Typography.Link>
+                <Typography.Link className={styles.textStyle}>
+                  Sign In
+                </Typography.Link>
               </Link>
             )}
           </Flex>
@@ -50,12 +59,17 @@ const FooterComponent = ({ setScrollToEvents }) => {
           <Flex vertical>
             <Typography.Text strong>Donation Links</Typography.Text>
             <Typography.Link
+              className={styles.textStyle}
               href="https://secure2.convio.net/alsa/site/TR/ALSEvent/WesternPennsylvania?px=8776181&pg=personal&fr_id=16411"
               target="_blank"
             >
               2024 CEO Soak
             </Typography.Link>
-            <Typography.Link href="https://www.als.org/" target="_blank">
+            <Typography.Link
+              className={styles.textStyle}
+              href="https://www.als.org/"
+              target="_blank"
+            >
               ALS Association
             </Typography.Link>
           </Flex>
@@ -64,6 +78,7 @@ const FooterComponent = ({ setScrollToEvents }) => {
           <Flex vertical>
             <Typography.Text strong>Contact</Typography.Text>
             <Typography.Link
+              className={styles.textStyle}
               href="Max@alscornholechallenge.com"
               target="_blank"
             >

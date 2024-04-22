@@ -8,7 +8,6 @@ import {
   Button,
   List,
   Collapse,
-  Divider,
   Row,
   Col,
   Card,
@@ -23,6 +22,7 @@ import {
   IoPricetagOutline,
 } from "react-icons/io5";
 
+// Assets
 import cornholeBoard from "../../assets/cornholeboard.jpg";
 
 // components
@@ -34,8 +34,7 @@ import useListEventRegistrations from "../../hooks/useListEventRegistrations";
 
 import styles from "./EventDetailsPage.module.css";
 
-const { Title, Paragraph, Text } = Typography;
-const { Panel } = Collapse;
+const { Title, Paragraph } = Typography;
 
 const EventDetailsPage = () => {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
@@ -308,6 +307,7 @@ const EventDetailsPage = () => {
                 type="primary"
                 size="large"
                 className={styles.registerButton}
+                onClick={() => navigate(`/registration/${event_id}`)}
               >
                 Register
               </Button>

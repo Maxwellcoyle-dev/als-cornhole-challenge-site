@@ -5,11 +5,11 @@ import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import { Layout } from "antd"; // Importing Layout from Ant Design
 
-import Navbar from "./components/Navbar/Navbar.jsx";
+import { Navbar } from "./components/Navbar/Navbar.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import AboutPage from "./pages/AboutPage";
 import EventDetailsPage from "./pages/EventDetailsPage/EventDetailsPage.jsx";
-import RegistrationPage from "./pages/RegistrationPage";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.jsx";
 import SigninPage from "./pages/SigninPage.jsx";
 import MyAccountPage from "./pages/MyAccountPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -55,7 +55,7 @@ const App = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/event/:event_id" element={<EventDetailsPage />} />
               <Route
-                path="/registration"
+                path="/registration/:event_id"
                 element={
                   <ProtectedRoute>
                     <RegistrationPage />

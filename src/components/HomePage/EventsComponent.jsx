@@ -68,14 +68,18 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
     <Row
       ref={eventsUseRef}
       className={styles.eventCardRow}
-      gutter={[32, 16]}
+      gutter={[16, 16]}
       justify="center"
       style={{
         backgroundColor: "lightgray",
       }}
     >
       <Col sm={19} md={18} lg={22} xl={22}>
-        <Title style={{ margin: 0, fontSize: "1.6rem" }} level={2}>
+        <Title
+          style={{ margin: 0, marginBottom: "1rem", textAlign: "center" }}
+          className={styles.levelTwoFont}
+          level={2}
+        >
           Upcoming Events
         </Title>
       </Col>
@@ -84,13 +88,15 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
         <Col
           sm={20}
           md={20}
-          lg={8}
-          xl={8}
-          style={{ width: "100%", height: "100%" }}
+          lg={7}
+          xl={7}
+          xxl={7}
+          style={{ width: "min-content" }}
         >
           <Skeleton
             loading={eventsIsPending}
             active
+            className={styles.eventCard}
             style={{
               margin: "1rem",
               padding: "2rem",
@@ -102,6 +108,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
 
           {events && (
             <Card
+              className={styles.eventCard}
               style={{
                 backgroundColor: "white",
                 borderRadius: 8,
@@ -109,13 +116,16 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                 width: "100%",
               }}
             >
-              <Paragraph>
+              <Paragraph className={styles.cardSubTitle}>
                 {dayjs(event.event_date).format("ddd, MMM d, YYYY")} @{" "}
                 {formattedStartTime(event.start_time)}
               </Paragraph>
-              <Title level={5}>{event.name}</Title>
+              <Title level={5} className={styles.levelFourFont}>
+                {event.name}
+              </Title>
               <Flex vertical gap=".5rem">
                 <Paragraph
+                  className={styles.textStyle}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -123,10 +133,11 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                     margin: 0,
                   }}
                 >
-                  <IoLocationOutline color="blue" />
+                  <IoLocationOutline color="#228b22" style={{ fontSize: 22 }} />
                   {event.location}
                 </Paragraph>
                 <Paragraph
+                  className={styles.textStyle}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -136,12 +147,19 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                 >
                   {eventDateTime(event) < currentDate ? (
                     <>
-                      <IoLockClosedOutline color="red" /> Registration Closed
+                      <IoLockClosedOutline
+                        color="red"
+                        style={{ fontSize: 22 }}
+                      />{" "}
+                      Registration Closed
                     </>
                   ) : (
                     <>
-                      <IoCheckmarkCircleOutline color="green" /> Registration
-                      Open
+                      <IoCheckmarkCircleOutline
+                        color="#228b22"
+                        style={{ fontSize: 22 }}
+                      />{" "}
+                      Registration Open
                     </>
                   )}
                 </Paragraph>
@@ -158,10 +176,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                   onClick={() => handleViewEventDetailsClick(event.event_id)}
                   block
                   type="default"
-                  style={{
-                    borderColor: "rgb(22, 119, 255)",
-                    color: "rgb(22, 119, 255)",
-                  }}
+                  className={styles.eventCardButton}
                   size="large"
                 >
                   View Details

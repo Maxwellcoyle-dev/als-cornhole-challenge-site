@@ -74,10 +74,10 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
             align="center"
             style={{ textAlign: "left", alignContent: "center" }}
           >
-            <Typography.Title style={{ fontSize: "1.6rem" }}>
+            <Typography.Title className={styles.levelTwoFont}>
               Our Mission
             </Typography.Title>
-            <Typography.Paragraph>
+            <Typography.Paragraph className={styles.textStyle}>
               Our cornhole events are meant to bring people together around a
               simple game that we love, cornhole. At the same time, we want to
               do what we can to support the battle against ALS. All proceeds
@@ -95,10 +95,10 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
             xl={{ order: 2, span: 8 }}
             style={{ alignContent: "center" }}
           >
-            <Typography.Title style={{ fontSize: "1.6rem" }}>
+            <Typography.Title className={styles.levelTwoFont}>
               Bringing people together
             </Typography.Title>
-            <Typography.Paragraph style={{}}>
+            <Typography.Paragraph className={styles.textStyle}>
               During the summer of 2024, we're raising money to support Matt
               Henderson in the 2024 CEO Soak. Matt is the Founder & CEO of
               Henderson Construction Fabrics and Hope For Hispaniola. Matt has
@@ -138,7 +138,10 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
           >
             Want to donate directly?
           </Typography.Title>
-          <Typography.Paragraph style={{ textAlign: "center" }}>
+          <Typography.Paragraph
+            style={{ textAlign: "center" }}
+            className={styles.textStyle}
+          >
             Head over to the ALS Association website to donate directly to the
             ALS Association and support Matt Henderson in the 2024 CEO Soak.
           </Typography.Paragraph>
@@ -146,6 +149,7 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
             icon={<IoOpenOutline />}
             type="primary"
             style={{ width: "auto" }}
+            className={styles.secondaryBtn}
             size="large"
             href="https://secure2.convio.net/alsa/site/TR/ALSEvent/WesternPennsylvania?px=8776181&pg=personal&fr_id=16411"
             target="_blank"

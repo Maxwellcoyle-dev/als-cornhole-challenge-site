@@ -1,15 +1,24 @@
 .navBar {
-  height: 4rem;
+  height: 6rem;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: white;
+}
+
+@media (max-width: 991px) {
+  .navBar {
+    height: 6rem;
+  }
 }
 
 .logoDiv {
   position: absolute;
   left: 3rem;
+  display: flex;
+  align-items: center;
 }
 
 .navMenuIconDiv {
@@ -19,15 +28,24 @@
 }
 
 .menuIcon {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .navMenuSpan {
   display: block;
 }
 
-@media (min-width: 900px) {
+.navLogo {
+  height: 4rem !important;
+}
+
+@media (min-width: 991px) {
   .navMenuIconDiv {
     display: none;
   }
+}
+
+.menuItem {
+  border-radius: 0.5rem;
+  border: #228b22 1px solid;
 }

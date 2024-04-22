@@ -7,7 +7,7 @@ import logo from "../../assets/site-logo.svg";
 import styles from "./Navbar.module.css";
 import { set } from "lodash";
 
-const Navbar = ({ authStatus = "authenticated" }) => {
+export const Navbar = ({ authStatus = "authenticated" }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -28,15 +28,10 @@ const Navbar = ({ authStatus = "authenticated" }) => {
     <div className={styles.navBar}>
       <div className={styles.logoDiv}>
         <Link to="/" className={styles.navLogo}>
-          <Image
-            src={logo}
-            className={styles.navLogo}
-            height="3rem"
-            preview={false}
-          />
+          <Image src={logo} className={styles.navLogo} preview={false} />
         </Link>
       </div>
-      {width < 900 ? (
+      {width < 991 ? (
         <div className={styles.navMenuIconDiv}>
           <IoMenuOutline
             className={styles.menuIcon}
@@ -74,14 +69,17 @@ const Navbar = ({ authStatus = "authenticated" }) => {
   );
 };
 
-export default Navbar;
-
 const AppMenu = ({ isInline = false, authStatus, setOpenMenu }) => {
   return (
     <Menu
       mode={isInline ? "inline" : "horizontal"}
       inlineCollapsed={false}
-      style={{ backgroundColor: "transparent" }}
+      style={{
+        backgroundColor: "transparent",
+        height: "6rem",
+        alignItems: "center",
+        fontSize: "1.5rem",
+      }}
       bodyStyle={{ backgroundColor: "none" }}
       onSelect={() => {
         setOpenMenu(false);

@@ -1,5 +1,68 @@
+.textStyle {
+  font-size: 21px !important;
+  padding: 0;
+  margin: 0;
+}
+
+.levelOneFont {
+  font-size: 40px !important;
+}
+
+.levelTwoFont {
+  font-size: 36px !important;
+  font-weight: 600 !important;
+}
+
+.levelThreeFont {
+  font-size: 28;
+}
+
+.levelFourFont {
+  font-size: 24px !important;
+}
+
+.eventCard {
+  display: flex;
+  min-width: 450px;
+  max-width: 450px;
+  padding: 1rem;
+}
+
+@media (max-width: 991px) {
+  .eventCard {
+    display: block;
+    max-width: 100%;
+  }
+
+  .eventCardButton {
+    width: 100% !important;
+  }
+}
+
+.eventCardButton {
+  border-color: #228b22 !important;
+  color: #8b4513 !important;
+  font-size: 22px;
+  height: 3rem;
+  width: 12rem !important;
+}
+
+.eventCardButton:hover {
+  background-color: #228b223c !important;
+  border-color: #228b22 !important;
+}
+
+.cardSubTitle {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #8b4513;
+}
+
 .eventCardRow {
-  padding: 4rem;
+  padding: 4rem 5rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -10,18 +73,6 @@
 }
 
 /* write media querues for card compoennt, in dsektop should show max of 3 in a line. in tablet and mobile, should show 1 card per line */
-.card {
-  min-width: 200px;
-  max-width: 400px;
-  min-height: 100%;
-}
-
-@media (max-width: 768px) {
-  .card {
-    width: 100%;
-    height: 100%;
-  }
-}
 
 /* Home Page About Section */
 .aboutSectionRow {
@@ -41,4 +92,23 @@
   .aboutRow {
     gap: 1rem;
   }
+}
+
+.eventsButton {
+  background-color: #228b22;
+  font-weight: 600;
+}
+
+.eventsButton:hover {
+  background-color: #228b22a9 !important;
+}
+
+.secondaryBtn {
+  background-color: #8b4513;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.secondaryBtn:hover {
+  background-color: #8b4513a9 !important;
 }

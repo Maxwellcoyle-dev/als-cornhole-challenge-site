@@ -1,15 +1,20 @@
 // Library Imports
 import React, { useEffect, useState } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Row, Col, Typography } from "antd";
 
 // Components
-import StripePaymentWrapper from "../components/StripePaymentWrapper";
-import RegistrationForm from "../components/RegistrationForm";
+import StripePaymentWrapper from "../../components/Registration/StripePaymentWrapper";
+import RegistrationForm from "../../components/Registration/RegistrationForm";
+import CheckoutInfoCard from "../../components/Registration/CheckoutInfoCard";
 
 // Hooks
-import useCreateRegistration from "../hooks/useCreateRegistration";
-import useUserAttributes from "../hooks/useUserAttributes";
+import useCreateRegistration from "../../hooks/useCreateRegistration";
+import useUserAttributes from "../../hooks/useUserAttributes";
+import useListEvents from "../../hooks/useListEvents";
+
+import styles from "./RegistrationPage.module.css";
 
 const defaultRegistrationFormData = {
   firstName: "",
@@ -19,19 +24,19 @@ const defaultRegistrationFormData = {
 };
 
 const RegistrationPage = () => {
+  const { event_id } = useParams();
   const [registrationFormData, setRegistrationFormData] = useState(
     defaultRegistrationFormData
   ); // Store registration data
-
+  const [registrationType, setRegistrationType] = useState("team");
   const [registrationComplete, setRegistrationComplete] = useState(false); // Store registration completion status
   const [paymentComplete, setPaymentComplete] = useState(false); // Store payment completion status
 
   const { putRegistration } = useCreateRegistration();
   const { userAttributes } = useUserAttributes();
 
-  // Get Event speficic data from location state
-  const location = useLocation();
-  const event = location.state?.event;
+  const { events, isPending, isError } = useListEvents();
+  const event = events?.find((event) => event.event_id === event_id);
 
   useEffect(() => {
     console.log(
@@ -56,14 +61,20 @@ const RegistrationPage = () => {
   }, [paymentComplete]);
 
   return (
-    <div className="App">
-      <h1>Register for {event?.name}</h1>
-      <RegistrationForm
-        registrationFormData={registrationFormData}
-        setRegistrationFormData={setRegistrationFormData}
-        setRegistrationComplete={setRegistrationComplete}
-        eventCost={event?.cost}
-      />
+    <Row className={styles.registrationPage} justify="center" gutter={[32]}>
+      <Col lg={14}>
+        <RegistrationForm
+          setRegistrationType={setRegistrationType}
+          registrationType={registrationType}
+          registrationFormData={registrationFormData}
+          setRegistrationFormData={setRegistrationFormData}
+          setRegistrationComplete={setRegistrationComplete}
+          eventCost={event?.cost}
+        />
+      </Col>
+      <Col lg={6}>
+        <CheckoutInfoCard registrationType={registrationType} />
+      </Col>
       {registrationComplete && (
         <StripePaymentWrapper
           event={event}
@@ -71,7 +82,7 @@ const RegistrationPage = () => {
         />
       )}
       {paymentComplete && <h2>Registration and Payment Complete!</h2>}
-    </div>
+    </Row>
   );
 };
 
