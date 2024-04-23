@@ -46,7 +46,7 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
   }, []);
 
   return (
-    <Flex vertical>
+    <Flex vertical className={styles.homePageFlex}>
       <HeroComponent setScrollToEvents={setScrollToEvents} />
       <EventsComponent authStatus={authStatus} eventsUseRef={eventsUseRef} />
 
@@ -57,7 +57,7 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
             lg={{ order: 1, span: 8 }}
             md={{ order: 1, span: 10 }}
             sm={{ order: 2, span: 20 }}
-            xs={{ order: 2, span: 21 }}
+            xs={{ order: 2, span: 22 }}
             align="center"
             justify="center"
           >
@@ -65,7 +65,7 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
           </Col>
 
           <Col
-            xs={{ order: 1, span: 21 }}
+            xs={{ order: 1, span: 22 }}
             sm={{ order: 1, span: 20 }}
             md={{ order: 2, span: 10 }}
             lg={{ order: 2, span: 9 }}
@@ -88,7 +88,7 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
 
         <Row align="space-around" className={styles.aboutRow}>
           <Col
-            xs={{ order: 1, span: 21 }}
+            xs={{ order: 1, span: 22 }}
             sm={{ order: 1, span: 20 }}
             md={{ order: 2, span: 10 }}
             lg={{ order: 2, span: 9 }}
@@ -121,10 +121,9 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
       </Row>
 
       <Row
-        vertical
         align="center"
         justify="center"
-        style={{ marginBottom: "8rem" }}
+        style={{ paddingTop: "2rem", paddingBottom: "6rem" }}
       >
         <Col xs={{ span: 21 }} lg={14} xl={16} align="center">
           <Typography.Title

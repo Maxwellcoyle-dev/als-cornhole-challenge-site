@@ -1,5 +1,15 @@
+.homePageFlex {
+  margin: 4rem 0;
+}
+
+@media (max-width: 600px) {
+  .homePageFlex {
+    margin: 0;
+  }
+}
+
 .textStyle {
-  font-size: 21px !important;
+  font-size: 23px !important;
   padding: 0;
   margin: 0;
 }
@@ -18,7 +28,14 @@
 }
 
 .levelFourFont {
-  font-size: 24px !important;
+  font-size: 25px !important;
+  font-weight: 600 !important;
+}
+
+@media (max-width: 600px) {
+  .heroImage {
+    display: none;
+  }
 }
 
 .eventCard {
@@ -31,7 +48,7 @@
 @media (max-width: 991px) {
   .eventCard {
     display: block;
-    max-width: 100%;
+    min-width: 100%;
   }
 
   .eventCardButton {
@@ -67,7 +84,7 @@
 
 @media (max-width: 768px) {
   .eventCardRow {
-    padding: 3rem 1.5rem;
+    padding: 3rem 0.5rem;
     gap: 2rem;
   }
 }
@@ -76,13 +93,14 @@
 
 /* Home Page About Section */
 .aboutSectionRow {
-  margin: 6rem 4rem 6rem 4rem;
+  margin: 4rem;
   gap: 6rem;
 }
 
 @media (max-width: 768px) {
   .aboutSectionRow {
-    margin: 3rem 0 3rem 0;
+    margin: 0;
+    margin-top: 3rem;
     align-content: center;
     gap: 3rem;
   }

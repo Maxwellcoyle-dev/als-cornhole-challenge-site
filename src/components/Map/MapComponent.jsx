@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import {
   APIProvider,
   Map,
   AdvancedMarker,
   Pin,
-  InfoWindow,
 } from "@vis.gl/react-google-maps";
-import { Card, Typography } from "antd";
 
 import { IoOpenOutline } from "react-icons/io5";
 
@@ -41,7 +39,6 @@ const MapComponent = ({
         style={{
           height: "100%",
           width: "100%",
-          maxWidth: "700px",
           minHeight: "300px",
         }}
         onClick={handleMapClick}

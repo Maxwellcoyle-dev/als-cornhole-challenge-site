@@ -84,14 +84,16 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
         </Title>
       </Col>
 
-      {events?.map((event) => (
+      {events?.map((event, index) => (
         <Col
+          xs={24}
           sm={20}
           md={20}
           lg={7}
           xl={7}
           xxl={7}
           style={{ width: "min-content" }}
+          key={index}
         >
           <Skeleton
             loading={eventsIsPending}
