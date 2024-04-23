@@ -3,16 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { registrationInfo, includedItems } from "../../registrationInfo";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
-import {
-  Typography,
-  Button,
-  List,
-  Collapse,
-  Row,
-  Col,
-  Card,
-  Image,
-} from "antd";
+import { Typography, Button, List, Row, Col, Card, Image } from "antd";
 import {
   IoArrowDownOutline,
   IoCheckboxOutline,
@@ -143,26 +134,24 @@ const EventDetailsPage = () => {
           className={styles.sectionTwoCol}
           justify="center"
           alignItems="center"
-          style={{ paddingBottom: "2rem", width: "100%" }}
+          style={{ paddingBottom: "2rem" }}
         >
-          <div className={styles.sectionFlexDiv}>
-            <Title level={2} className={styles.level2SectionTitle}>
-              Basic Info
-            </Title>
-            <Paragraph
-              style={{ width: "90%", paddingBottom: ".75rem" }}
-              className={styles.textStyle}
-            >
-              The proceeds from this event will be donated directly to the ALS
-              Association supporting Matt Henderson in the 2024 CEO Soak.
-            </Paragraph>
-            <Paragraph style={{ width: "90%" }} className={styles.textStyle}>
-              This event is designed to bring people together, create some fun
-              competition, and support an important cause. All skill levels are
-              welcome. Depending on the number of registrations we may create 2
-              brackets based on skill level.
-            </Paragraph>
-          </div>
+          <Title level={2} className={styles.level2SectionTitle}>
+            Basic Info
+          </Title>
+          <Paragraph
+            style={{ paddingBottom: ".75rem" }}
+            className={styles.textStyle}
+          >
+            The proceeds from this event will be donated directly to the ALS
+            Association supporting Matt Henderson in the 2024 CEO Soak.
+          </Paragraph>
+          <Paragraph className={styles.textStyle}>
+            This event is designed to bring people together, create some fun
+            competition, and support an important cause. All skill levels are
+            welcome. Depending on the number of registrations we may create 2
+            brackets based on skill level.
+          </Paragraph>
         </Col>
         <Col
           xl={20}
@@ -173,38 +162,16 @@ const EventDetailsPage = () => {
           className={styles.sectionThreeCol}
           justify="center"
           alignItems="center"
-          style={{ paddingBottom: "2rem", width: "100%" }}
+          style={{ paddingBottom: "2rem" }}
         >
-          <div className={styles.sectionFlexDiv}>
-            <Title level={2} className={styles.level2SectionTitle}>
-              Registration
-            </Title>
-            <Paragraph style={{ width: "90%" }} className={styles.textStyle}>
-              Registration is open for teams (max 3 per team) and individuals
-              (partner draw). $50 for team registration. Max 3 players per team.
-              $25 for individual registration. We will place you on a team.
-            </Paragraph>
-          </div>
-        </Col>
-
-        <Col
-          xl={20}
-          lg={20}
-          md={20}
-          sm={20}
-          xs={22}
-          className={styles.sectionThreeCol}
-        >
-          <div className={styles.sectionFlexDiv}>
-            <Title level={2} className={styles.level2SectionTitle}>
-              Rules
-            </Title>
-            <Paragraph className={styles.textStyle}>
-              The rules for this event are simple. The{" "}
-              <strong>Double Elimination Team Tournament</strong> will be played
-              as follows:
-            </Paragraph>
-          </div>
+          <Title level={2} className={styles.level2SectionTitle}>
+            Registration
+          </Title>
+          <Paragraph className={styles.textStyle}>
+            Registration is open for teams (max 3 per team) and individuals
+            (partner draw). $50 for team registration. Max 3 players per team.
+            $25 for individual registration. We will place you on a team.
+          </Paragraph>
         </Col>
 
         <Col
@@ -215,71 +182,58 @@ const EventDetailsPage = () => {
           xs={22}
           className={styles.sectionFourCol}
         >
-          <div className={styles.sectionFlexDiv}>
-            <Title level={2} className={styles.level2SectionTitle}>
-              What's included
-            </Title>
-            <Paragraph className={styles.textStyle}>
-              Registering for this event enters you into 2 events. The{" "}
-              <strong> Double Elimination Team Tournament</strong> and the{" "}
-              <strong>One Shot Challenge</strong>.
-            </Paragraph>
-          </div>
-        </Col>
-        <Col xl={20} lg={20} md={20} sm={20} xs={22}>
-          <div className={styles.sectionFlexDiv}>
-            <Card className={styles.card}>
-              {includedItems.map((option, index) => (
-                <Card
-                  type="inner"
-                  className={styles.innerCard}
-                  title={
-                    <Title style={{ fontSize: "24px" }} level={5}>
-                      {option.optionName}
-                    </Title>
-                  }
-                  key={index}
-                >
-                  <List
-                    split={false}
-                    dataSource={option.descipriton}
-                    renderItem={(item) => (
-                      <List.Item className={styles.innerCardListItem}>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "1rem",
-                          }}
-                        >
-                          <IoCheckboxOutline
-                            style={{
-                              width: "1rem",
-                              minHeight: "1rem",
-                              minWidth: "1rem",
-                              color: "green",
-                            }}
-                          />
-                          <Paragraph
-                            style={{
-                              margin: 0,
-                              padding: 0,
-                              textWrap: "wrap",
-                              fontSize: "21px",
-                            }}
-                          >
-                            {item}
-                          </Paragraph>
-                        </div>
-                      </List.Item>
-                    )}
-                  />
-                </Card>
-              ))}
-            </Card>
-          </div>
+          <Title level={2} className={styles.level2SectionTitle}>
+            What's included
+          </Title>
+          <Paragraph className={styles.textStyle}>
+            Registering for this event enters you into 2 events. The{" "}
+            <strong> Double Elimination Team Tournament</strong> and the{" "}
+            <strong>One Shot Challenge</strong>.
+          </Paragraph>
         </Col>
 
+        {includedItems.map((option, index) => (
+          <Col xl={{ span: 10 }} lg={12} md={20} sm={20} xs={22}>
+            <Card
+              type="inner"
+              className={styles.innerCard}
+              title={
+                <Title style={{ fontSize: "24px", textWrap: "wrap" }} level={5}>
+                  {option.optionName}
+                </Title>
+              }
+              key={index}
+            >
+              <List
+                split={false}
+                dataSource={option.descipriton}
+                renderItem={(item) => (
+                  <List.Item className={styles.innerCardListItem}>
+                    <div style={{}}>
+                      <IoCheckboxOutline
+                        style={{
+                          width: "1rem",
+                          minHeight: "1rem",
+                          color: "green",
+                        }}
+                      />
+                      <Paragraph
+                        style={{
+                          margin: 0,
+                          padding: 0,
+                          textWrap: "wrap",
+                          fontSize: "21px",
+                        }}
+                      >
+                        {item}
+                      </Paragraph>
+                    </div>
+                  </List.Item>
+                )}
+              />
+            </Card>
+          </Col>
+        ))}
         <Col
           xl={8}
           lg={8}

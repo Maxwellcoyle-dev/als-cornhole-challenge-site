@@ -70,39 +70,42 @@ export const Navbar = ({ authStatus = "authenticated" }) => {
 };
 
 const AppMenu = ({ isInline = false, authStatus, setOpenMenu }) => {
+  const menuItems = [
+    {
+      key: "home",
+      label: <Link to="/">Home</Link>,
+    },
+    {
+      key: "about",
+      label: <Link to="/about">About</Link>,
+    },
+    {
+      key: "events",
+      label: <Link to="/#events">Events</Link>,
+    },
+    authStatus === "authenticated"
+      ? {
+          key: "myAccount",
+          label: <Link to="/myAccount">My Account</Link>,
+        }
+      : {
+          key: "signin",
+          label: <Link to="/signin">Sign In/Sign Up</Link>,
+        },
+  ];
   return (
     <Menu
       mode={isInline ? "inline" : "horizontal"}
-      inlineCollapsed={false}
       style={{
         backgroundColor: "transparent",
         height: "6rem",
         alignItems: "center",
         fontSize: "1.5rem",
       }}
-      bodyStyle={{ backgroundColor: "none" }}
+      items={menuItems}
       onSelect={() => {
         setOpenMenu(false);
       }}
-    >
-      <Menu.Item key="home">
-        <Link to="/">Home</Link>
-      </Menu.Item>
-      <Menu.Item key="about">
-        <Link to="/about">About</Link>
-      </Menu.Item>
-      <Menu.Item key="events">
-        <Link to="/#events">Events</Link>
-      </Menu.Item>
-      {authStatus === "authenticated" ? (
-        <Menu.Item key="myAccount">
-          <Link to="/myAccount">My Account</Link>
-        </Menu.Item>
-      ) : (
-        <Menu.Item key="signin">
-          <Link to="/signin">Sign In/Sign Up</Link>
-        </Menu.Item>
-      )}
-    </Menu>
+    />
   );
 };

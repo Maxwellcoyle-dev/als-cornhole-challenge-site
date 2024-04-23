@@ -36,21 +36,15 @@ const FooterComponent = ({ setScrollToEvents }) => {
               Events
             </Typography.Link>
             <Link to="/about">
-              <Typography.Link className={styles.textStyle}>
-                About
-              </Typography.Link>
+              <Typography className={styles.textStyle}>About</Typography>
             </Link>
             {authStatus === "authenticated" ? (
               <Link to="/myAccount">
-                <Typography.Link className={styles.textStyle}>
-                  My Account
-                </Typography.Link>
+                <Typography className={styles.textStyle}>My Account</Typography>
               </Link>
             ) : (
               <Link to="/signin">
-                <Typography.Link className={styles.textStyle}>
-                  Sign In
-                </Typography.Link>
+                <Typography className={styles.textStyle}>Sign In</Typography>
               </Link>
             )}
           </Flex>

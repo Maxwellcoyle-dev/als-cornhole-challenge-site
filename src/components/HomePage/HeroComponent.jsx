@@ -9,7 +9,8 @@ const HeroComponent = ({ setScrollToEvents }) => {
   return (
     <Row style={{ height: "80vh" }} align="center">
       <Col
-        span={20}
+        lg={20}
+        xs={22}
         align="center"
         justify="center"
         style={{ margin: "auto" }}
@@ -21,6 +22,7 @@ const HeroComponent = ({ setScrollToEvents }) => {
           alt="Hero Image"
           height="auto"
           width="90%"
+          className={styles.heroImage}
           style={{
             maxWidth: "600px",
             height: "auto",
