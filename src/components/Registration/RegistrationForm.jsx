@@ -11,13 +11,28 @@ import {
 } from "antd";
 import { UserOutlined, MailOutlined, TeamOutlined } from "@ant-design/icons";
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 const { Item } = Form;
 
-const RegistrationForm = ({ registrationType, setRegistrationType }) => {
+const RegistrationForm = ({
+  registrationType,
+  setRegistrationType,
+  registrationFormData,
+  setRegistrationFormData,
+}) => {
   // Function to handle registration type change
   const onRegistrationTypeChange = (e) => {
     setRegistrationType(e.target.value);
+  };
+
+  const handleRegistrationFormSubmit = (values) => {
+    // Include the registrationType in the form data
+    const formData = {
+      ...values,
+      registrationType: registrationType,
+    };
+    console.log("Received values of form: ", formData);
+    setRegistrationFormData(formData);
   };
 
   // Helper function to render teammate input fields
@@ -30,6 +45,10 @@ const RegistrationForm = ({ registrationType, setRegistrationType }) => {
         Team Info
       </Divider>
       <Col xs={24}>
+        <Paragraph>
+          Please provide a team name along with the first name and email of your
+          teammates. We'll send a confirmation to everyone on your team.
+        </Paragraph>
         <Item
           name="teamName"
           rules={[{ required: true, message: "Please input your team name!" }]}
@@ -87,7 +106,12 @@ const RegistrationForm = ({ registrationType, setRegistrationType }) => {
         width: "100%",
       }}
     >
-      <Form layout="vertical" style={{ boxShadow: "none", width: "100%" }}>
+      <Form
+        layout="vertical"
+        style={{ boxShadow: "none", width: "100%" }}
+        onFinish={handleRegistrationFormSubmit}
+        initialValues={registrationFormData}
+      >
         <Title
           level={4}
           style={{
@@ -96,6 +120,9 @@ const RegistrationForm = ({ registrationType, setRegistrationType }) => {
         >
           Registration
         </Title>
+        <Paragraph>
+          Please provide your information below to register for the event.
+        </Paragraph>
         <Item>
           <Radio.Group
             defaultValue="team"
@@ -150,6 +177,7 @@ const RegistrationForm = ({ registrationType, setRegistrationType }) => {
                 type="primary"
                 htmlType="submit"
                 style={{ width: "100%" }}
+                onClick={handleRegistrationFormSubmit}
               >
                 Register
               </Button>

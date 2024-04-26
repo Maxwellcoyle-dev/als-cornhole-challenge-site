@@ -39,6 +39,21 @@ const RegistrationPage = () => {
   const event = events?.find((event) => event.event_id === event_id);
 
   useEffect(() => {
+    if (userAttributes) {
+      setRegistrationFormData({
+        ...registrationFormData,
+        firstName: userAttributes.given_name,
+        lastName: userAttributes.family_name,
+        email: userAttributes.email,
+      });
+    }
+  }, [userAttributes]);
+
+  useEffect(() => {
+    console.log("form data: ", registrationFormData);
+  }, []);
+
+  useEffect(() => {
     console.log(
       "registration event data:",
       event?.event_id,

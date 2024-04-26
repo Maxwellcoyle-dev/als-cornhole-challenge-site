@@ -104,13 +104,27 @@ const EventDetailsPage = () => {
               </Paragraph>
             </div>
 
-            <Button
-              type="primary"
-              size="large"
-              className={styles.registerButton}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: ".5rem",
+                paddingTop: "2rem",
+              }}
             >
-              Register <IoArrowDownOutline />
-            </Button>
+              <Button
+                type="primary"
+                size="large"
+                className={styles.registerButton}
+                onClick={() => navigate(`/registration/${event_id}`)}
+              >
+                Register
+              </Button>
+              <Paragraph style={{ margin: 0, padding: 0, paddingLeft: "2rem" }}>
+                More Information
+              </Paragraph>
+              <IoArrowDownOutline />
+            </div>
           </Card>
         </Col>
         <Col
@@ -126,7 +140,7 @@ const EventDetailsPage = () => {
         </Col>
 
         <Col
-          xl={20}
+          xl={19}
           lg={20}
           md={20}
           sm={20}
@@ -154,7 +168,7 @@ const EventDetailsPage = () => {
           </Paragraph>
         </Col>
         <Col
-          xl={20}
+          xl={19}
           lg={20}
           md={20}
           sm={20}
@@ -175,7 +189,7 @@ const EventDetailsPage = () => {
         </Col>
 
         <Col
-          xl={20}
+          xl={19}
           lg={20}
           md={20}
           sm={20}
@@ -193,10 +207,18 @@ const EventDetailsPage = () => {
         </Col>
 
         {includedItems.map((option, index) => (
-          <Col xl={{ span: 10 }} lg={12} md={20} sm={20} xs={22}>
+          <Col
+            xl={{ span: 9 }}
+            lg={12}
+            md={20}
+            sm={20}
+            xs={22}
+            style={{ paddingTop: "1rem" }}
+            key={index}
+          >
             <Card
-              type="inner"
               className={styles.innerCard}
+              style={{ padding: 0 }}
               title={
                 <Title style={{ fontSize: "24px", textWrap: "wrap" }} level={5}>
                   {option.optionName}
@@ -212,7 +234,7 @@ const EventDetailsPage = () => {
                     <div style={{}}>
                       <IoCheckboxOutline
                         style={{
-                          width: "1rem",
+                          minWidth: "1.5rem",
                           minHeight: "1rem",
                           color: "green",
                         }}

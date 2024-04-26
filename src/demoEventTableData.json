@@ -1,0 +1,202 @@
+[
+  {
+    "event_id": 1,
+    "event_date": "2024-05-20",
+    "doors_open": "12:00:00",
+    "event_start": "14:00:00",
+    "event_name": "Cornhole Charity Classic",
+    "event_short_description": "Beginner & Intermediate - Doubles BYOP + Chip Draw - 6 game guarantee",
+    "event_description": "Join us for the 5th Annual Cornhole Charity Classic! This event is open to all skill levels and ages. We will have a beginner and intermediate division. Each team will play 6 games guaranteed. The top 4 teams in each division will advance to a single elimination playoff. All proceeds will benefit the local",
+    "event_location": "City Park",
+    "event_address": "123 Park Ave, Springfield, 98765",
+    "max_teams": 20,
+    "registration": [
+      {
+        "registration_type": [
+          {
+            "registration_type": "team",
+            "price": 50.0
+          },
+          {
+            "registration_type": "individual",
+            "price": 25.0
+          }
+        ]
+      }
+    ],
+    "included": [
+      {
+        "name": "Round Robin + Doubles Tournament",
+        "description": "Start off with 4 round robin games, then a double elimination tournament. Depending on num of teams we may split into 2 brackets based on round robin record."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, who then becomes the winner. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets two attempts to score a cornhole. The prize for winning the game is $50."
+      },
+      {
+        "name": "Drinks & Snacks for sale",
+        "description": "Enter the 50/50 raffle for a chance to win half of the total pot. Tickets are $1 each or 6 for $5. The winner will be drawn at the end of the event."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Pay now",
+        "optionDescription": "Pay with credit or debit card to reserve your spot. You will receive a confirmation email upon registration."
+      },
+      {
+        "optionName": "Pay cash at the event",
+        "optionDescription": "Pay in cash at the event. You can complete the registration form to let us know you're coming. We’ll send you an email reminder before the event and let you know if the event is filling up. "
+      }
+    ]
+  },
+  {
+    "event_id": 2,
+    "event_date": "2024-06-15",
+    "doors_open": "10:00:00",
+    "event_start": "11:30:00",
+    "event_name": "Urban Cornhole Fest",
+    "event_short_description": "Open Singles & Team Play - 8 game guarantee",
+    "event_description": "Experience the excitement at our Urban Cornhole Fest! Suitable for competitive and amateur players with separate divisions. Each participant is guaranteed 8 games, with the top 8 advancing to the playoffs. Proceeds will go towards urban development projects.",
+    "event_location": "Downtown Plaza",
+    "event_address": "456 City Road, Metropolis, 12345",
+    "max_teams": 30,
+    "registration": [
+      {
+        "registration_type": [
+          {
+            "registration_type": "team",
+            "price": 60.0
+          },
+          {
+            "registration_type": "individual",
+            "price": 30.0
+          }
+        ]
+      }
+    ],
+    "included": [
+      {
+        "name": "Group Stage + Knockout Rounds",
+        "description": "Compete in 6 initial games in a group stage followed by a knockout round for the top qualifiers."
+      },
+      {
+        "name": "Skill Shot Contest",
+        "description": "Challenge your accuracy in our Skill Shot Contest! Top scorer wins a special prize of $100."
+      },
+      {
+        "name": "Local Food and Craft Beer",
+        "description": "Enjoy selections from local food trucks and craft breweries while you play or watch the competition."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Online Booking",
+        "optionDescription": "Secure your spot by booking online. Full refunds available up to one week before the event."
+      },
+      {
+        "optionName": "Pay on-site",
+        "optionDescription": "Reserve now and pay at the venue. Cash and credit accepted."
+      }
+    ]
+  },
+  {
+    "event_id": 3,
+    "event_date": "2024-07-04",
+    "doors_open": "09:00:00",
+    "event_start": "10:00:00",
+    "event_name": "Beachside Cornhole Bash",
+    "event_short_description": "Family Friendly - Teams & Solo - Prizes for All Ages",
+    "event_description": "Come down to the Beachside Cornhole Bash this Independence Day! Perfect for families and players of all ages, with multiple age brackets ensuring fair play. Each team competes in at least 6 games, with fantastic beach-themed prizes for winners.",
+    "event_location": "Sandy Beach",
+    "event_address": "789 Ocean View Blvd, Coastal City, 54321",
+    "max_teams": 40,
+    "registration": [
+      {
+        "registration_type": [
+          {
+            "registration_type": "team",
+            "price": 45.0
+          },
+          {
+            "registration_type": "individual",
+            "price": 20.0
+          }
+        ]
+      }
+    ],
+    "included": [
+      {
+        "name": "Family Division Play",
+        "description": "Play in a relaxed family division where fun is the main goal. Prizes for top family teams include beach gear and local attraction tickets."
+      },
+      {
+        "name": "Long Toss Contest",
+        "description": "Test your strength in the Long Toss Contest. The longest throw wins a special beach package prize."
+      },
+      {
+        "name": "Beach Refreshments",
+        "description": "Stay cool with ice cream and chilled drinks available throughout the day."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Advance Online Payment",
+        "optionDescription": "Book your spot early online and get a 10% early bird discount."
+      },
+      {
+        "optionName": "Pay at Event Entrance",
+        "optionDescription": "Payments can be made at the entrance on the day of the event. Both cash and cards are accepted."
+      }
+    ]
+  },
+  {
+    "event_id": 4,
+    "event_date": "2024-10-10",
+    "doors_open": "13:00:00",
+    "event_start": "14:30:00",
+    "event_name": "Autumn Cornhole Challenge",
+    "event_short_description": "Mixed Doubles - 5 game minimum - Seasonal Prizes",
+    "event_description": "Join us for the Autumn Cornhole Challenge! This event features mixed doubles for a dynamic play experience, with a minimum of 5 games per team. Enjoy the crisp autumn air and compete for unique seasonal prizes. A portion of the proceeds will support local wildlife conservation.",
+    "event_location": "Riverfront Park",
+    "event_address": "321 Riverside Drive, Mountain Town, 67890",
+    "max_teams": 25,
+    "registration": [
+      {
+        "registration_type": [
+          {
+            "registration_type": "team",
+            "price": 55.0
+          },
+          {
+            "registration_type": "individual",
+            "price": 28.0
+          }
+        ]
+      }
+    ],
+    "included": [
+      {
+        "name": "Double Elimination Tournament",
+        "description": "Teams will battle it out in a double elimination format to keep the stakes high and the games exciting."
+      },
+      {
+        "name": "Accuracy Competition",
+        "description": "Participate in our Accuracy Competition for a chance to win specialty crafted autumn-themed prizes."
+      },
+      {
+        "name": "Seasonal Snacks and Drinks",
+        "description": "Savor seasonal treats and warm beverages while enjoying the games."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Secure Online Payment",
+        "optionDescription": "Pay securely online and guarantee your spot. Confirmation email will be sent immediately after registration."
+      },
+      {
+        "optionName": "Register and Pay Later",
+        "optionDescription": "Sign up now and choose to pay at the event. Reminder emails will be sent closer to the event date."
+      }
+    ]
+  }
+]

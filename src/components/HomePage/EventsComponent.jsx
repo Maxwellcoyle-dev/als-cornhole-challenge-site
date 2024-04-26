@@ -135,7 +135,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                     margin: 0,
                   }}
                 >
-                  <IoLocationOutline color="#228b22" style={{ fontSize: 22 }} />
+                  <IoLocationOutline color="#228b22" style={{ minWidth: 22 }} />
                   {event.location}
                 </Paragraph>
                 <Paragraph
