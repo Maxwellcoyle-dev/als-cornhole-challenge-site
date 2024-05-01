@@ -1,0 +1,50 @@
+{
+  "event_id": 1,
+  "event_date": "2024-05-20",
+  "doors_open": "12:00:00",
+  "event_start": "14:00:00",
+  "event_name": "Cornhole Charity Classic",
+  "event_short_description": "Beginner & Intermediate - Doubles BYOP + Chip Draw - 6 game guarantee",
+  "event_description": "Join us for the 5th Annual Cornhole Charity Classic! This event is open to all skill levels and ages. We will have a beginner and intermediate division. Each team will play 6 games guaranteed. The top 4 teams in each division will advance to a single elimination playoff. All proceeds will benefit the local",
+  "event_location": "City Park",
+  "event_address": "123 Park Ave, Springfield, 98765",
+  "max_teams": 20,
+  "registration": [
+    {
+      "registration_type": [
+        {
+          "registration_type": "team",
+          "price": 50.0
+        },
+        {
+          "registration_type": "individual",
+          "price": 25.0
+        }
+      ]
+    }
+  ],
+  "included": [
+    {
+      "name": "Round Robin + Doubles Tournament",
+      "description": "Start off with 4 round robin games, then a double elimination tournament. Depending on num of teams we may split into 2 brackets based on round robin record."
+    },
+    {
+      "name": "One Shot Challenge",
+      "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, who then becomes the winner. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets two attempts to score a cornhole. The prize for winning the game is $50."
+    },
+    {
+      "name": "Drinks & Snacks for sale",
+      "description": "Enter the 50/50 raffle for a chance to win half of the total pot. Tickets are $1 each or 6 for $5. The winner will be drawn at the end of the event."
+    }
+  ],
+  "payment_options": [
+    {
+      "optionName": "Pay now",
+      "optionDescription": "Pay with credit or debit card to reserve your spot. You will receive a confirmation email upon registration."
+    },
+    {
+      "optionName": "Pay cash at the event",
+      "optionDescription": "Pay in cash at the event. You can complete the registration form to let us know you're coming. We’ll send you an email reminder before the event and let you know if the event is filling up. "
+    }
+  ]
+}

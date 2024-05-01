@@ -10,9 +10,6 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import AboutPage from "./pages/AboutPage";
 import EventDetailsPage from "./pages/EventDetailsPage/EventDetailsPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.jsx";
-import SigninPage from "./pages/SigninPage.jsx";
-import MyAccountPage from "./pages/MyAccountPage.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import FooterComponent from "./components/Footer/FooterComponent.jsx";
 
 const { Header, Content, Footer } = Layout; // Destructuring Layout components
@@ -56,14 +53,8 @@ const App = () => {
               <Route path="/event/:event_id" element={<EventDetailsPage />} />
               <Route
                 path="/registration/:event_id"
-                element={
-                  <ProtectedRoute>
-                    <RegistrationPage />
-                  </ProtectedRoute>
-                }
+                element={<RegistrationPage />}
               />
-              <Route path="/signin" element={<SigninPage />} />
-              <Route path="/myAccount" element={<MyAccountPage />} />
             </Routes>
           </Content>
           <Footer style={{ padding: 0, margin: 0 }}>

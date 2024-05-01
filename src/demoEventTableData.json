@@ -1,0 +1,141 @@
+[
+  {
+    "event_id": "1",
+    "event_date": "2024-05-20",
+    "doors_open": "12:00:00",
+    "start_time": "14:00:00",
+    "event_name": "ALS Cornhole Challenge #1",
+    "event_short_description": "Beginner & Intermediate - Doubles BYOP + Chip Draw - 6 game guarantee",
+    "event_description": "Join us for a cornhole tournament designed for beginner and intermediate players. Competitors have the option to register in pairs or individually. The event will start with four round robin games to determine initial rankings. Depending on the number of entries,participants may be split into two brackets based on their performance in these games. For those registering as individuals, partners will be rotated during the round robin phase. Once this phase concludes, individuals will be placed into brackets based on their win/loss records and paired randomly within their bracket for a double elimination tournament.\n\nProceeds from the event will be donated to charity. Prizes will be awarded to the top three teams.",
+    "event_location": "City Park",
+    "event_address": "123 Park Ave, Springfield, 98765",
+    "max_teams": 20,
+    "registration": [
+      {
+        "registration_type": "Team",
+        "price": 50.0
+      },
+      {
+        "registration_type": "Individual",
+        "price": 25.0
+      }
+    ],
+    "included": [
+      {
+        "name": "Round Robin + Doubles Tournament",
+        "description": "Start off with 4 round robin games, then a double elimination tournament. Depending on num of teams we may split into 2 brackets based on round robin record."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, who then becomes the winner. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets two attempts to score a cornhole. The prize for winning the game is $50."
+      },
+      {
+        "name": "Drinks & Snacks for sale",
+        "description": "Enter the 50/50 raffle for a chance to win half of the total pot. Tickets are $1 each or 6 for $5. The winner will be drawn at the end of the event."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Pay now",
+        "optionDescription": "Pay with credit or debit card to reserve your spot. You will receive a confirmation email upon registration."
+      },
+      {
+        "optionName": "Pay cash at the event",
+        "optionDescription": "Pay in cash at the event. You can complete the registration form to let us know you're coming. We’ll send you an email reminder before the event and let you know if the event is filling up. "
+      }
+    ]
+  },
+
+  {
+    "event_id": "2",
+    "event_date": "2024-05-20",
+    "doors_open": "12:00:00",
+    "start_time": "14:00:00",
+    "event_name": "ALS Cornhole Challenge #1",
+    "event_short_description": "Beginner & Intermediate - Doubles BYOP + Chip Draw - 6 game guarantee",
+    "event_description": "Join us for a cornhole tournament designed for beginner and intermediate players. Competitors have the option to register in pairs or individually. The event will start with four round robin games to determine initial rankings. Depending on the number of entries,participants may be split into two brackets based on their performance in these games. For those registering as individuals, partners will be rotated during the round robin phase. Once this phase concludes, individuals will be placed into brackets based on their win/loss records and paired randomly within their bracket for a double elimination tournament.\n\nProceeds from the event will be donated to charity. Prizes will be awarded to the top three teams.",
+    "event_location": "City Park",
+    "event_address": "123 Park Ave, Springfield, 98765",
+    "max_teams": 20,
+    "registration": [
+      {
+        "registration_type": "Team",
+        "price": 50.0
+      },
+      {
+        "registration_type": "Individual",
+        "price": 25.0
+      }
+    ],
+    "included": [
+      {
+        "name": "Round Robin + Doubles Tournament",
+        "description": "Start off with 4 round robin games, then a double elimination tournament. Depending on num of teams we may split into 2 brackets based on round robin record."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, who then becomes the winner. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets two attempts to score a cornhole. The prize for winning the game is $50."
+      },
+      {
+        "name": "Drinks & Snacks for sale",
+        "description": "Enter the 50/50 raffle for a chance to win half of the total pot. Tickets are $1 each or 6 for $5. The winner will be drawn at the end of the event."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Pay now",
+        "optionDescription": "Pay with credit or debit card to reserve your spot. You will receive a confirmation email upon registration."
+      },
+      {
+        "optionName": "Pay cash at the event",
+        "optionDescription": "Pay in cash at the event. You can complete the registration form to let us know you're coming. We’ll send you an email reminder before the event and let you know if the event is filling up. "
+      }
+    ]
+  },
+  {
+    "event_id": "3",
+    "event_date": "2024-05-20",
+    "doors_open": "12:00:00",
+    "start_time": "14:00:00",
+    "event_name": "ALS Cornhole Challenge #1",
+    "event_short_description": "Beginner & Intermediate - Doubles BYOP + Chip Draw - 6 game guarantee",
+    "event_description": "Join us for a cornhole tournament designed for beginner and intermediate players. Competitors have the option to register in pairs or individually. The event will start with four round robin games to determine initial rankings. Depending on the number of entries,participants may be split into two brackets based on their performance in these games. For those registering as individuals, partners will be rotated during the round robin phase. Once this phase concludes, individuals will be placed into brackets based on their win/loss records and paired randomly within their bracket for a double elimination tournament.\n\nProceeds from the event will be donated to charity. Prizes will be awarded to the top three teams.",
+    "event_location": "City Park",
+    "event_address": "123 Park Ave, Springfield, 98765",
+    "max_teams": 20,
+    "registration": [
+      {
+        "registration_type": "Team",
+        "price": 50.0
+      },
+      {
+        "registration_type": "Individual",
+        "price": 25.0
+      }
+    ],
+    "included": [
+      {
+        "name": "Round Robin + Doubles Tournament",
+        "description": "Start off with 4 round robin games, then a double elimination tournament. Depending on num of teams we may split into 2 brackets based on round robin record."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, who then becomes the winner. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets two attempts to score a cornhole. The prize for winning the game is $50."
+      },
+      {
+        "name": "Drinks & Snacks for sale",
+        "description": "Enter the 50/50 raffle for a chance to win half of the total pot. Tickets are $1 each or 6 for $5. The winner will be drawn at the end of the event."
+      }
+    ],
+    "payment_options": [
+      {
+        "optionName": "Pay now",
+        "optionDescription": "Pay with credit or debit card to reserve your spot. You will receive a confirmation email upon registration."
+      },
+      {
+        "optionName": "Pay cash at the event",
+        "optionDescription": "Pay in cash at the event. You can complete the registration form to let us know you're coming. We’ll send you an email reminder before the event and let you know if the event is filling up. "
+      }
+    ]
+  }
+]
