@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/site-logo.svg";
 
 import styles from "./Navbar.module.css";
-import { set } from "lodash";
 
 export const Navbar = ({ authStatus = "authenticated" }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -69,7 +68,7 @@ export const Navbar = ({ authStatus = "authenticated" }) => {
   );
 };
 
-const AppMenu = ({ isInline = false, authStatus, setOpenMenu }) => {
+const AppMenu = ({ isInline = false, setOpenMenu }) => {
   const menuItems = [
     {
       key: "home",
@@ -83,15 +82,6 @@ const AppMenu = ({ isInline = false, authStatus, setOpenMenu }) => {
       key: "events",
       label: <Link to="/#events">Events</Link>,
     },
-    authStatus === "authenticated"
-      ? {
-          key: "myAccount",
-          label: <Link to="/myAccount">My Account</Link>,
-        }
-      : {
-          key: "signin",
-          label: <Link to="/signin">Sign In/Sign Up</Link>,
-        },
   ];
   return (
     <Menu

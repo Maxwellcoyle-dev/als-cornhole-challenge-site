@@ -1,19 +1,28 @@
 import React from "react";
-import { Card, Typography, Divider } from "antd";
+import { Card, Typography, Divider, Button } from "antd";
 import {
   TeamOutlined,
   CalendarOutlined,
   CheckCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { IoLocationOutline, IoTimeOutline } from "react-icons/io5";
+
+import styles from "../../pages/RegistrationPage/RegistrationPage.module.css";
 
 const { Title, Text } = Typography;
 
-const CheckoutInfoCard = ({ registrationType }) => {
-  const eventName = "June Cornhole Challenge";
+const CheckoutInfoCard = ({ registrationFormData, event }) => {
+  const {
+    event_name: eventName,
+    event_date: eventDate,
+    event_location: eventLocation,
+    event_address: eventAddress,
+    start_time: startTime,
+    doors_open: doorsOpen,
+  } = event;
 
-  const teamName = "";
-  const eventDate = "June 15, 2024";
+  const { registrationType } = registrationFormData;
 
   return (
     <Card
@@ -32,22 +41,27 @@ const CheckoutInfoCard = ({ registrationType }) => {
           marginBottom: "16px",
           display: "flex",
           flexDirection: "column",
-          gap: "1rem",
+          gap: ".5rem",
         }}
       >
         <Title level={4}>{eventName}</Title>
-        <Text>
-          <CalendarOutlined /> {eventDate}
-        </Text>
-        {registrationType === "team" ? (
+        <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
+          <CalendarOutlined style={{ width: "1.5rem", height: "1.5rem" }} />
+          <Text>{eventDate}</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
+          <IoLocationOutline style={{ width: "1.5rem", height: "1.5rem" }} />
           <Text>
-            <TeamOutlined /> Team Registration
+            {eventLocation} <br /> {eventAddress}
           </Text>
-        ) : (
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
+          <IoTimeOutline style={{ width: "1.5rem", height: "1.5rem" }} />
           <Text>
-            <UserOutlined /> Individual Registration (Player Pool)
+            Doors Open @ {doorsOpen} <br /> Starts @ {startTime}{" "}
           </Text>
-        )}
+        </div>
       </div>
 
       <Divider style={{ margin: "20px 0" }} />
@@ -55,6 +69,15 @@ const CheckoutInfoCard = ({ registrationType }) => {
         Included
       </Title>
       <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
+        {registrationType === "team" ? (
+          <Text type="secondary">
+            <TeamOutlined /> Team Registration
+          </Text>
+        ) : (
+          <Text type="secondary">
+            <UserOutlined /> Individual Registration (Player Pool)
+          </Text>
+        )}
         <Text type="secondary">
           <CheckCircleOutlined /> Doubles Tournament
         </Text>
@@ -77,6 +100,9 @@ const CheckoutInfoCard = ({ registrationType }) => {
           {registrationType === "team" ? `$50` : "$25"}
         </Title>
       </div>
+      <Text type="secondary" style={{ padding: 0, margin: 0 }}>
+        Payment due at the event (Cash or Venmo)
+      </Text>
     </Card>
   );
 };

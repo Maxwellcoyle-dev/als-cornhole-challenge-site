@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const createRegistrationEndpoint =
@@ -12,22 +12,20 @@ const useCreateRegistration = () => {
     registered: false,
   });
 
+  useEffect(() => {
+    console.log(isPending);
+  }, [isPending]);
+
   const putRegistration = async ({
     event_id,
     event_date,
-    user_id,
-    first_name,
-    last_name,
-    team_name,
+    registrationFormData,
   }) => {
     console.log(
       "putRegistration: ",
       event_id,
-      user_id,
       event_date,
-      first_name,
-      last_name,
-      team_name
+      registrationFormData
     );
     setIsPending(true);
     setIsError(false);
@@ -41,10 +39,7 @@ const useCreateRegistration = () => {
         {
           event_id,
           event_date,
-          user_id,
-          first_name,
-          last_name,
-          team_name,
+          registration: registrationFormData,
         },
         {
           headers: header,

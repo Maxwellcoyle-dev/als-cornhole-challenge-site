@@ -15,14 +15,17 @@ const { Title, Paragraph } = Typography;
 const { Item } = Form;
 
 const RegistrationForm = ({
-  registrationType,
-  setRegistrationType,
   registrationFormData,
   setRegistrationFormData,
+  setShowRegistrationForm,
 }) => {
+  const registrationType = registrationFormData.registrationType;
   // Function to handle registration type change
   const onRegistrationTypeChange = (e) => {
-    setRegistrationType(e.target.value);
+    setRegistrationFormData({
+      ...registrationFormData,
+      registrationType: e.target.value,
+    });
   };
 
   const handleRegistrationFormSubmit = (values) => {
@@ -31,8 +34,8 @@ const RegistrationForm = ({
       ...values,
       registrationType: registrationType,
     };
-    console.log("Received values of form: ", formData);
     setRegistrationFormData(formData);
+    setShowRegistrationForm(false);
   };
 
   // Helper function to render teammate input fields
@@ -41,10 +44,9 @@ const RegistrationForm = ({
       <Divider
         style={{ padding: 0, marginTop: "1rem", marginBottom: "1rem" }}
         orientation="left"
-      >
-        Team Info
-      </Divider>
+      ></Divider>
       <Col xs={24}>
+        <Title level={5}>Teammates</Title>
         <Paragraph>
           Please provide a team name along with the first name and email of your
           teammates. We'll send a confirmation to everyone on your team.
@@ -56,43 +58,34 @@ const RegistrationForm = ({
           <Input prefix={<TeamOutlined />} placeholder="Team Name" />
         </Item>
       </Col>
-      {[...Array(2)].map((_, index) => (
-        <React.Fragment key={index}>
-          <Col xs={24} sm={12}>
-            <Item
-              name={`teammate${index + 1}FirstName`}
-              rules={[
-                {
-                  required: index === 0 ? true : false,
-                  message: "Teammate first name required",
-                },
-              ]}
-            >
-              <Input
-                prefix={<UserOutlined />}
-                placeholder={`Teammate ${index + 1} First Name`}
-              />
-            </Item>
-          </Col>
-          <Col xs={24} sm={12}>
-            <Item
-              name={`teammate${index + 1}Email`}
-              rules={[
-                {
-                  required: index === 0 ? true : false,
-                  message: "Teammate email required",
-                  type: "email",
-                },
-              ]}
-            >
-              <Input
-                prefix={<MailOutlined />}
-                placeholder={`Teammate ${index + 1} Email`}
-              />
-            </Item>
-          </Col>
-        </React.Fragment>
-      ))}
+
+      <Col xs={24} sm={12}>
+        <Item
+          name="partnerName"
+          rules={[
+            {
+              required: true,
+              message: "Teammate first name required",
+            },
+          ]}
+        >
+          <Input prefix={<UserOutlined />} placeholder={`First Name`} />
+        </Item>
+      </Col>
+      <Col xs={24} sm={12}>
+        <Item
+          name="partnerEmail"
+          rules={[
+            {
+              required: true,
+              message: "Teammate email required",
+              type: "email",
+            },
+          ]}
+        >
+          <Input prefix={<MailOutlined />} placeholder={`Email`} />
+        </Item>
+      </Col>
     </>
   );
 
@@ -169,17 +162,27 @@ const RegistrationForm = ({
               <Input prefix={<MailOutlined />} placeholder="Email" />
             </Item>
           </Col>
+          <Col xs={24}>
+            <Item label="Skill Level" name="skillLevel" required>
+              <Radio.Group>
+                <Radio value="beginner">Beginner</Radio>
+                <Radio value="intermediate">Intermediate</Radio>
+                <Radio value="advanced">Advanced</Radio>
+              </Radio.Group>
+            </Item>
+          </Col>
 
           {registrationType === "team" && renderTeammateFields()}
+
           <Col xs={24}>
             <Item>
               <Button
                 type="primary"
                 htmlType="submit"
-                style={{ width: "100%" }}
-                onClick={handleRegistrationFormSubmit}
+                size="large"
+                style={{ marginTop: "2rem", width: "auto" }}
               >
-                Register
+                Next
               </Button>
             </Item>
           </Col>

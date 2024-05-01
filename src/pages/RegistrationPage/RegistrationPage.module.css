@@ -1,3 +1,18 @@
 .registrationPage {
-  padding: 4rem 0 1rem 0;
+  padding: 6rem 0 4rem 0;
+}
+
+.editFormButton {
+  margin: 1rem 0;
+  width: auto;
+}
+
+.registrationConfirmationButtonDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirmationButton {
+  margin: 1rem 0;
+  width: auto;
 }

@@ -5,10 +5,12 @@ import {
   IoLocationOutline,
   IoCheckmarkCircleOutline,
   IoLockClosedOutline,
+  IoBusinessOutline,
 } from "react-icons/io5";
 import dayjs from "dayjs";
 
 import useListEvents from "../../hooks/useListEvents";
+import events from "../../demoEventTableData.json";
 
 import styles from "../../pages/HomePage/HomePage.module.css";
 
@@ -16,7 +18,7 @@ const { Title, Paragraph } = Typography;
 
 const EventsComponent = ({ authStatus, eventsUseRef }) => {
   const navigate = useNavigate();
-  const { events, eventsIsPending } = useListEvents();
+  // const { events, eventsIsPending } = useListEvents();
 
   // return date/time value like so: 2024-04-12T12:00:00
   const eventDateTime = (event) => {
@@ -61,6 +63,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
 
   const handleViewEventDetailsClick = (eventId) => {
     console.log("eventId", eventId);
+    console.log(typeof eventId);
     navigate(`/event/${eventId}`);
   };
 
@@ -95,19 +98,6 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
           style={{ width: "min-content" }}
           key={index}
         >
-          <Skeleton
-            loading={eventsIsPending}
-            active
-            className={styles.eventCard}
-            style={{
-              margin: "1rem",
-              padding: "2rem",
-              backgroundColor: "white",
-              borderRadius: 8,
-              boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-            }}
-          />
-
           {events && (
             <Card
               className={styles.eventCard}
@@ -123,7 +113,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                 {formattedStartTime(event.start_time)}
               </Paragraph>
               <Title level={5} className={styles.levelFourFont}>
-                {event.name}
+                {event.event_name}
               </Title>
               <Flex vertical gap=".5rem">
                 <Paragraph
@@ -136,8 +126,9 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
                   }}
                 >
                   <IoLocationOutline color="#228b22" style={{ minWidth: 22 }} />
-                  {event.location}
+                  {event.event_location} - {event.event_address}
                 </Paragraph>
+
                 <Paragraph
                   className={styles.textStyle}
                   style={{
