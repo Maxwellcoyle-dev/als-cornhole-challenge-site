@@ -37,7 +37,8 @@ const RegistrationPage = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(true); // Store registration completion status
   const [paymentComplete, setPaymentComplete] = useState(false); // Store payment completion status
 
-  const { putRegistration, isPending, isError } = useCreateRegistration();
+  const { putRegistration, isPending, isError, registration } =
+    useCreateRegistration();
 
   // const { events, isPending, isError } = useListEvents();
 
@@ -72,6 +73,7 @@ const RegistrationPage = () => {
             handleRegister={handleRegister}
             registrationPending={isPending}
             registrationError={isError}
+            registration={registration}
           />
         )}
       </Col>
