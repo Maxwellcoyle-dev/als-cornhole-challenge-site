@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { set } from "lodash";
 
 const createRegistrationEndpoint =
   "https://dk7qlt962d.execute-api.us-east-2.amazonaws.com/Stage/create-registration";
@@ -8,7 +9,7 @@ const useCreateRegistration = () => {
   const [isPending, setIsPending] = useState(false);
   const [isError, setIsError] = useState(false);
   const [registration, setRegistration] = useState({
-    registrationId: "",
+    registrationConfirmation: {},
     registered: false,
   });
 
@@ -29,6 +30,10 @@ const useCreateRegistration = () => {
     );
     setIsPending(true);
     setIsError(false);
+    setRegistration({
+      registrationId: "",
+      registered: false,
+    });
 
     const header = {
       "Content-Type": "application/json",
@@ -46,7 +51,12 @@ const useCreateRegistration = () => {
         }
       );
       console.log("response: ", response.data);
-      setRegistration(response.data);
+      setRegistration({
+        registrationConfirmation: response.data.registrationConfirmation,
+        registered: true,
+      });
+      setIsError(false);
+      console.log(response.data.registrationConfirmation);
     } catch (error) {
       console.error("error: ", error);
       setIsError(true);

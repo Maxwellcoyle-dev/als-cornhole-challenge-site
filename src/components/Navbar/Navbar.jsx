@@ -76,7 +76,7 @@ const AppMenu = ({ isInline = false, setOpenMenu }) => {
     },
     {
       key: "about",
-      label: <Link to="/about">About</Link>,
+      label: <Link to="/#about">About</Link>,
     },
     {
       key: "events",

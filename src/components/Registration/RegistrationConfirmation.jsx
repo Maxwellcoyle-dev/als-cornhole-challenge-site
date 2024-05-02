@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Card, Spin } from "antd";
-
-// hooks
-import useCreateRegistration from "../../hooks/useCreateRegistration";
+import { Button, Card, Spin, Result } from "antd";
 
 import styles from "../../pages/RegistrationPage/RegistrationPage.module.css";
 
@@ -12,6 +9,7 @@ const RegistrationConfirmation = ({
   handleRegister,
   registrationPending,
   registrationError,
+  registration,
 }) => {
   const {
     firstName,
@@ -62,6 +60,26 @@ const RegistrationConfirmation = ({
             max@alscornholechallenge.com
           </a>
         </p>
+      </Card>
+    );
+  }
+
+  if (registration.registered) {
+    return (
+      <Card
+        style={{
+          background: "#fff",
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          padding: "24px",
+          width: "100%",
+        }}
+      >
+        <Result
+          status="success"
+          title={`Successfully Registered for the ${registration.registrationConfirmation.event_name}`}
+          subTitle="You will receive an email confirmation shortly."
+        />
       </Card>
     );
   }
