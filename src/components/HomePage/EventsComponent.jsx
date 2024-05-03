@@ -5,12 +5,11 @@ import {
   IoLocationOutline,
   IoCheckmarkCircleOutline,
   IoLockClosedOutline,
-  IoBusinessOutline,
 } from "react-icons/io5";
 import dayjs from "dayjs";
 
 import useListEvents from "../../hooks/useListEvents";
-import events from "../../demoEventTableData.json";
+// import events from "../../demoEventTableData.json";
 
 import styles from "../../pages/HomePage/HomePage.module.css";
 
@@ -18,19 +17,11 @@ const { Title, Paragraph } = Typography;
 
 const EventsComponent = ({ authStatus, eventsUseRef }) => {
   const navigate = useNavigate();
-  // const { events, eventsIsPending } = useListEvents();
+  const { events, eventsIsPending } = useListEvents();
 
   // return date/time value like so: 2024-04-12T12:00:00
   const eventDateTime = (event) => {
     return `${event.event_date}T${event.event_time}`;
-  };
-
-  const formattedStartTime = (startTime) => {
-    // Creating a full date-time string with a fixed date
-    const dateTime = `2000-01-01T${startTime}:00`;
-
-    // Using Day.js to format this date-time string into 12-hour time format
-    return dayjs(dateTime).format("h:mm A");
   };
 
   const currentDate = new Date();
@@ -110,7 +101,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
             >
               <Paragraph className={styles.cardSubTitle}>
                 {dayjs(event.event_date).format("ddd, MMM d, YYYY")} @{" "}
-                {formattedStartTime(event.start_time)}
+                {event.doors_open}
               </Paragraph>
               <Title level={5} className={styles.levelFourFont}>
                 {event.event_name}

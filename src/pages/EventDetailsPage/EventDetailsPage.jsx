@@ -14,9 +14,6 @@ import {
   IoPersonOutline,
 } from "react-icons/io5";
 
-// demo data from events table - json file
-import eventsData from "../../demoEventTableData.json";
-
 // Assets
 import cornholeBoard from "../../assets/cornholeboard.jpg";
 
@@ -34,24 +31,19 @@ const { Title, Paragraph } = Typography;
 const EventDetailsPage = () => {
   const [event, setEvent] = useState(null);
   const [error, setError] = useState(false);
+  const { events, eventsIsPending, eventsIsError } = useListEvents();
 
   const navigate = useNavigate();
   const { event_id } = useParams();
 
   useEffect(() => {
-    console.log("eventsData", eventsData);
-
-    const selectedEvent = eventsData.find((e) => e.event_id === event_id);
+    const selectedEvent = events.find((e) => e.event_id === event_id);
     if (selectedEvent) {
       setEvent(selectedEvent);
     } else {
       setError(true);
     }
   }, [event_id]);
-
-  console.log(event);
-
-  // const { eventRegistrations } = useListEventRegistrations(event_id);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page

@@ -5,6 +5,7 @@ const listEventsEndpoint =
   "https://dk7qlt962d.execute-api.us-east-2.amazonaws.com/Stage/list-events";
 
 const useListEvents = () => {
+  console.log("useListEvents called");
   const fetchEvents = async () => {
     const response = await axios.get(listEventsEndpoint);
     console.log("response: ", response.data);
