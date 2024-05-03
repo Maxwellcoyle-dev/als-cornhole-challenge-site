@@ -53,7 +53,7 @@ const EventDetailsPage = () => {
     } else {
       setError(true);
     }
-  }, [event_id]);
+  }, [event_id, events]);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
