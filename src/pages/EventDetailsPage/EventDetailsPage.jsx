@@ -2,7 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
-import { Typography, Button, List, Row, Col, Card, Image, Divider } from "antd";
+import {
+  Typography,
+  Button,
+  List,
+  Row,
+  Col,
+  Card,
+  Image,
+  Divider,
+  Spin,
+} from "antd";
 import { TeamOutlined, UserOutlined } from "@ant-design/icons";
 import {
   IoArrowDownOutline,
@@ -37,7 +47,7 @@ const EventDetailsPage = () => {
   const { event_id } = useParams();
 
   useEffect(() => {
-    const selectedEvent = events.find((e) => e.event_id === event_id);
+    const selectedEvent = events?.find((e) => e.event_id === event_id);
     if (selectedEvent) {
       setEvent(selectedEvent);
     } else {
@@ -53,8 +63,23 @@ const EventDetailsPage = () => {
     return <div>Error: Event not found!</div>;
   }
 
-  if (event === null) {
-    return <div>Loading...</div>;
+  if (eventsIsPending) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "2rem",
+        }}
+      >
+        <Title level={4}>Loading...</Title>
+        <Spin size="large" />
+      </div>
+    );
   }
 
   if (event !== null) {
