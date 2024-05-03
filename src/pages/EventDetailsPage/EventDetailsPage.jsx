@@ -47,13 +47,17 @@ const EventDetailsPage = () => {
   const { event_id } = useParams();
 
   useEffect(() => {
-    const selectedEvent = events?.find((e) => e.event_id === event_id);
-    if (selectedEvent) {
-      setEvent(selectedEvent);
-    } else {
-      setError(true);
+    if (events) {
+      console.log("events: ", events);
+      console.log("event_id: ", event_id);
+      const selectedEvent = events?.find((e) => e.event_id === event_id);
+      if (selectedEvent) {
+        setEvent(selectedEvent);
+      } else {
+        setError(true);
+      }
     }
-  }, [event_id, events]);
+  }, [events]);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
@@ -72,7 +76,7 @@ const EventDetailsPage = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center",
+
           gap: "2rem",
         }}
       >
@@ -90,7 +94,6 @@ const EventDetailsPage = () => {
           id="eventDetailsPage"
           className={styles.eventDetailsPage}
           justify="center"
-          alignItems="center"
           gutter={[16, 0]} // [horizontal, vertical]}
         >
           <Col
@@ -155,7 +158,6 @@ const EventDetailsPage = () => {
               <div
                 style={{
                   display: "flex",
-                  alignItems: "center",
                   gap: ".5rem",
                   paddingTop: "2rem",
                 }}
