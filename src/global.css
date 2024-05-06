@@ -2,3 +2,10 @@
 .ant-row > div {
   max-width: none !important; /* Overrides the max-width for all divs within .ant-row */
 }
+
+/* colors */
+/* primary:  #228b22 */
+/* secondary:  #8b4513 */
+/* background: #ffffff */
+/* secondary background:  #D3D3D3 */
+/* secondary item / button: #F5F5DC */
