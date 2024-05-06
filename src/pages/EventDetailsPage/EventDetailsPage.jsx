@@ -106,7 +106,7 @@ const EventDetailsPage = () => {
             <div className={styles.heroCardListItem}>
               <IoLocationOutline size={28} className={styles.basicIcon} />
               <Paragraph className={[styles.cardText, styles.textStyle]}>
-                {event.event_location}
+                {event.event_location}, {event.event_address}
               </Paragraph>
             </div>
             <div className={styles.heroCardListItem}>
@@ -164,18 +164,20 @@ const EventDetailsPage = () => {
           <MapComponent />
         </Col>
 
-        <Col span={20}>
-          <Title level={2}>About</Title>
+        <Col xl={18} lg={20} md={20} sm={20} xs={22}>
+          <Title level={2} className={styles.level2SectionTitle}>
+            About
+          </Title>
           {event.event_description.split("\n").map((line, index) => (
             <Paragraph key={index}>{line}</Paragraph>
           ))}
         </Col>
         <Col
-          xl={20}
-          lg={22}
+          xl={18}
+          lg={20}
           md={20}
           sm={20}
-          xs={24}
+          xs={22}
           className={styles.includedSectionCol}
         >
           <Title level={2} className={styles.level2SectionTitle}>

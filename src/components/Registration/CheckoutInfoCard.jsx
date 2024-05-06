@@ -8,8 +8,6 @@ import {
 } from "@ant-design/icons";
 import { IoLocationOutline, IoTimeOutline } from "react-icons/io5";
 
-import styles from "../../pages/RegistrationPage/RegistrationPage.module.css";
-
 const { Title, Text } = Typography;
 
 const CheckoutInfoCard = ({ registrationFormData, event }) => {
