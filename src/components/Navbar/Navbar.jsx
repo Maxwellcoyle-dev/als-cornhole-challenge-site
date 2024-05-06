@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Flex, Image, Drawer } from "antd";
+import { Menu, Image, Drawer } from "antd";
 import { IoMenuOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import logo from "../../assets/site-logo.svg";
@@ -76,6 +76,7 @@ const AppMenu = ({ isInline = false, setOpenMenu }) => {
   return (
     <Menu
       mode={isInline ? "inline" : "horizontal"}
+      className={styles.navMenu}
       style={{
         backgroundColor: "transparent",
         height: "6rem",

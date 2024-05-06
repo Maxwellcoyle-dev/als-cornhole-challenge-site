@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Flex, Row, Col, Card, Typography, Button } from "antd";
+import { Flex, Row, Col, Card, Typography, Button, Spin } from "antd";
 import {
   IoLocationOutline,
   IoCheckmarkCircleOutline,
@@ -52,98 +52,115 @@ const EventsComponent = ({ eventsUseRef }) => {
         </Title>
       </Col>
 
-      {events?.map((event, index) => (
-        <Col
-          xs={22}
-          sm={20}
-          md={20}
-          lg={7}
-          xl={7}
-          xxl={7}
-          style={{ width: "min-content" }}
-          key={index}
+      {eventsIsPending && (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            padding: "2rem 0",
+          }}
         >
-          {events && (
-            <Card
-              className={styles.eventCard}
-              style={{
-                backgroundColor: "white",
-                borderRadius: 8,
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                width: "100%",
-              }}
-            >
-              <Paragraph className={styles.cardSubTitle}>
-                {dayjs(event.event_date).format("ddd, MMM d, YYYY")} @{" "}
-                {event.doors_open}
-              </Paragraph>
-              <Title level={5} className={styles.levelFourFont}>
-                {event.event_name}
-              </Title>
-              <Flex vertical gap=".5rem">
-                <Paragraph
-                  className={styles.textStyle}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".5rem",
-                    margin: 0,
-                  }}
-                >
-                  <IoLocationOutline color="#228b22" style={{ minWidth: 22 }} />
-                  {event.event_location} - {event.event_address}
-                </Paragraph>
+          <Spin size="large" />
+        </div>
+      )}
 
-                <Paragraph
-                  className={styles.textStyle}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".5rem",
-                    margin: 0,
-                  }}
-                >
-                  {eventDateTime(event) < currentDate ? (
-                    <>
-                      <IoLockClosedOutline
-                        color="red"
-                        style={{ fontSize: 22 }}
-                      />{" "}
-                      Registration Closed
-                    </>
-                  ) : (
-                    <>
-                      <IoCheckmarkCircleOutline
-                        color="#228b22"
-                        style={{ fontSize: 22 }}
-                      />{" "}
-                      Registration Open
-                    </>
-                  )}
-                </Paragraph>
-              </Flex>
-              <div
+      {events &&
+        events.map((event, index) => (
+          <Col
+            xs={22}
+            sm={20}
+            md={20}
+            lg={7}
+            xl={7}
+            xxl={7}
+            style={{ width: "min-content" }}
+            key={index}
+          >
+            {events && (
+              <Card
+                className={styles.eventCard}
                 style={{
+                  backgroundColor: "white",
+                  borderRadius: 8,
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
                   width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginTop: "3rem",
                 }}
               >
-                <Button
-                  onClick={() => handleViewEventDetailsClick(event.event_id)}
-                  block
-                  type="default"
-                  className={styles.eventCardButton}
-                  size="large"
+                <Paragraph className={styles.cardSubTitle}>
+                  {dayjs(event.event_date).format("ddd, MMM d, YYYY")} @{" "}
+                  {event.doors_open}
+                </Paragraph>
+                <Title level={5} className={styles.levelFourFont}>
+                  {event.event_name}
+                </Title>
+                <Flex vertical gap=".5rem">
+                  <Paragraph
+                    className={styles.textStyle}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: ".5rem",
+                      margin: 0,
+                    }}
+                  >
+                    <IoLocationOutline
+                      color="#228b22"
+                      style={{ minWidth: 22 }}
+                    />
+                    {event.event_location} - {event.event_address}
+                  </Paragraph>
+
+                  <Paragraph
+                    className={styles.textStyle}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: ".5rem",
+                      margin: 0,
+                    }}
+                  >
+                    {eventDateTime(event) < currentDate ? (
+                      <>
+                        <IoLockClosedOutline
+                          color="red"
+                          style={{ fontSize: 22 }}
+                        />{" "}
+                        Registration Closed
+                      </>
+                    ) : (
+                      <>
+                        <IoCheckmarkCircleOutline
+                          color="#228b22"
+                          style={{ fontSize: 22 }}
+                        />{" "}
+                        Registration Open
+                      </>
+                    )}
+                  </Paragraph>
+                </Flex>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginTop: "3rem",
+                  }}
                 >
-                  View Details
-                </Button>
-              </div>
-            </Card>
-          )}
-        </Col>
-      ))}
+                  <Button
+                    onClick={() => handleViewEventDetailsClick(event.event_id)}
+                    block
+                    type="default"
+                    className={styles.eventCardButton}
+                    size="large"
+                  >
+                    View Details
+                  </Button>
+                </div>
+              </Card>
+            )}
+          </Col>
+        ))}
     </Row>
   );
 };

@@ -16,6 +16,8 @@ Amplify.configure(config);
 const theme = {
   token: {
     fontSize: 18, // Update the font size here as per your requirements
+    colorPrimary: "#228b22",
+    colorSecondary: "#8b4513",
   },
 };
 
