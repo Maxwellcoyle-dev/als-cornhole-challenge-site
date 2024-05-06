@@ -6,7 +6,7 @@ import logo from "../../assets/site-logo.svg";
 
 import styles from "./Navbar.module.css";
 
-export const Navbar = ({ authStatus = "authenticated" }) => {
+export const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -38,12 +38,7 @@ export const Navbar = ({ authStatus = "authenticated" }) => {
           />
         </div>
       ) : (
-        <AppMenu
-          key={authStatus}
-          isInline={false}
-          authStatus={authStatus}
-          setOpenMenu={setOpenMenu}
-        />
+        <AppMenu isInline={false} setOpenMenu={setOpenMenu} />
       )}
 
       <Drawer
@@ -57,12 +52,7 @@ export const Navbar = ({ authStatus = "authenticated" }) => {
         placement="right"
         className={styles.drawer}
       >
-        <AppMenu
-          key={authStatus}
-          isInline
-          authStatus={authStatus}
-          setOpenMenu={setOpenMenu}
-        />
+        <AppMenu isInline setOpenMenu={setOpenMenu} />
       </Drawer>
     </div>
   );

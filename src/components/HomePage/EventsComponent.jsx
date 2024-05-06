@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Flex, Row, Col, Card, Typography, Button, Skeleton } from "antd";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Flex, Row, Col, Card, Typography, Button } from "antd";
 import {
   IoLocationOutline,
   IoCheckmarkCircleOutline,
@@ -15,7 +15,7 @@ import styles from "../../pages/HomePage/HomePage.module.css";
 
 const { Title, Paragraph } = Typography;
 
-const EventsComponent = ({ authStatus, eventsUseRef }) => {
+const EventsComponent = ({ eventsUseRef }) => {
   const navigate = useNavigate();
   const { events, eventsIsPending } = useListEvents();
 
@@ -25,32 +25,6 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
   };
 
   const currentDate = new Date();
-
-  useEffect(() => {
-    // sessionStorage.removeItem("postSignInRedirect");
-    // extract session storage
-    const storedSessionState = sessionStorage.getItem("postSignInRedirect");
-
-    if (storedSessionState) {
-      const sessionState = JSON.parse(storedSessionState);
-
-      const pathname = sessionState?.pathname;
-      const event = sessionState.state?.event;
-
-      const navigateToRegistration = () =>
-        navigate("/registration", { state: { event } });
-      if (
-        pathname === "/registration" &&
-        event &&
-        authStatus === "authenticated"
-      ) {
-        console.log("navigating to registration page");
-        navigateToRegistration();
-        // clear session storage
-        sessionStorage.removeItem("postSignInRedirect");
-      }
-    }
-  }, [authStatus]);
 
   const handleViewEventDetailsClick = (eventId) => {
     console.log("eventId", eventId);
@@ -80,7 +54,7 @@ const EventsComponent = ({ authStatus, eventsUseRef }) => {
 
       {events?.map((event, index) => (
         <Col
-          xs={24}
+          xs={22}
           sm={20}
           md={20}
           lg={7}

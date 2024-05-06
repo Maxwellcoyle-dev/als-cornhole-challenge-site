@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { throttle } from "lodash";
 import { useLocation } from "react-router-dom";
-import { useAuthenticator } from "@aws-amplify/ui-react";
 import { Flex } from "antd";
 
 import styles from "./HomePage.module.css";
@@ -11,7 +10,6 @@ import AboutComponent from "../../components/HomePage/AboutComponent";
 
 const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
   const location = useLocation();
-  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
   const eventsUseRef = useRef(null);
   const aboutUseRef = useRef(null);
@@ -47,7 +45,7 @@ const HomePage = ({ scrollToEvents, setScrollToEvents }) => {
   return (
     <Flex vertical className={styles.homePageFlex}>
       <HeroComponent setScrollToEvents={setScrollToEvents} />
-      <EventsComponent authStatus={authStatus} eventsUseRef={eventsUseRef} />
+      <EventsComponent eventsUseRef={eventsUseRef} />
       <AboutComponent aboutUseRef={aboutUseRef} />
     </Flex>
   );

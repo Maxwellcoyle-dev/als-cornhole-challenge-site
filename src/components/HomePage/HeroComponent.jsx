@@ -14,7 +14,7 @@ const HeroComponent = ({ setScrollToEvents }) => {
         align="center"
         justify="center"
         style={{ margin: "auto" }}
-        gap="2rem"
+        gap="3rem"
       >
         <Image
           preview={false}

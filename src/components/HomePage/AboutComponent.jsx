@@ -17,7 +17,7 @@ const AboutComponent = ({ aboutUseRef }) => {
             lg={{ order: 1, span: 8 }}
             md={{ order: 1, span: 10 }}
             sm={{ order: 2, span: 20 }}
-            xs={{ order: 2, span: 22 }}
+            xs={{ order: 2, span: 20 }}
             align="center"
             justify="center"
           >
@@ -25,7 +25,7 @@ const AboutComponent = ({ aboutUseRef }) => {
           </Col>
 
           <Col
-            xs={{ order: 1, span: 22 }}
+            xs={{ order: 1, span: 20 }}
             sm={{ order: 1, span: 20 }}
             md={{ order: 2, span: 10 }}
             lg={{ order: 2, span: 9 }}
@@ -48,7 +48,7 @@ const AboutComponent = ({ aboutUseRef }) => {
 
         <Row align="space-around" className={styles.aboutRow}>
           <Col
-            xs={{ order: 1, span: 22 }}
+            xs={{ order: 1, span: 20 }}
             sm={{ order: 1, span: 20 }}
             md={{ order: 2, span: 10 }}
             lg={{ order: 2, span: 9 }}
@@ -67,7 +67,7 @@ const AboutComponent = ({ aboutUseRef }) => {
             </Typography.Paragraph>
           </Col>
           <Col
-            xs={{ order: 1, span: 21 }}
+            xs={{ order: 1, span: 20 }}
             sm={{ order: 1, span: 20 }}
             md={{ order: 2, span: 10 }}
             lg={{ order: 2, span: 9 }}
@@ -84,11 +84,10 @@ const AboutComponent = ({ aboutUseRef }) => {
         justify="center"
         style={{ paddingTop: "2rem", paddingBottom: "6rem" }}
       >
-        <Col xs={{ span: 21 }} lg={14} xl={16} align="center">
+        <Col xs={20} lg={14} xl={16} align="center">
           <Typography.Title
             level={1}
             style={{
-              textAlign: "center",
               paddingTop: "1.5rem",
               paddingBottom: ".5rem",
               fontSize: "1.6rem",
@@ -96,12 +95,9 @@ const AboutComponent = ({ aboutUseRef }) => {
           >
             Want to donate directly?
           </Typography.Title>
-          <Typography.Paragraph
-            style={{ textAlign: "center" }}
-            className={styles.textStyle}
-          >
-            Head over to the ALS Association website to donate directly to the
-            ALS Association and support Matt Henderson in the 2024 CEO Soak.
+          <Typography.Paragraph className={styles.textStyle}>
+            Use this link to directly support Matt Henderson in the 2024 CEO
+            Soak.
           </Typography.Paragraph>
           <Button
             icon={<IoOpenOutline />}

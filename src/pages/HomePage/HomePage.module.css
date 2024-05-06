@@ -38,6 +38,7 @@
   }
 }
 
+/* EVENT COMPONENT STYLES*/
 .eventCard {
   display: flex;
   min-width: 450px;
@@ -49,6 +50,7 @@
   .eventCard {
     display: block;
     min-width: 100%;
+    padding: 1rem 0rem;
   }
 
   .eventCardButton {
