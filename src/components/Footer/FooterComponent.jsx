@@ -1,16 +1,12 @@
 import React from "react";
 import { Col, Flex, Image, Row, Typography, Button } from "antd";
 import { Link } from "react-router-dom";
-import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import logo from "../../assets/site-logo.svg";
 
 import styles from "./Footer.module.css";
 
 const FooterComponent = ({ setScrollToEvents }) => {
-  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
-
-  console.log(authStatus);
   return (
     <Flex
       style={{
@@ -38,15 +34,6 @@ const FooterComponent = ({ setScrollToEvents }) => {
             <Link to="/about">
               <Typography className={styles.textStyle}>About</Typography>
             </Link>
-            {authStatus === "authenticated" ? (
-              <Link to="/myAccount">
-                <Typography className={styles.textStyle}>My Account</Typography>
-              </Link>
-            ) : (
-              <Link to="/signin">
-                <Typography className={styles.textStyle}>Sign In</Typography>
-              </Link>
-            )}
           </Flex>
         </Col>
         <Col xl={4} lg={4} sm={6} xs={20}>
