@@ -4,7 +4,6 @@ import { IoOpenOutline } from "react-icons/io5";
 
 import styles from "../../pages/HomePage/HomePage.module.css";
 
-import mattsTeam from "../../assets/ceo-soak-team-matt.jpeg";
 import ceoSoakImage from "../../assets/CEO_Soak_logo_with_ALSA_Logo.png";
 
 const AboutComponent = ({ aboutUseRef }) => {
@@ -75,7 +74,10 @@ const AboutComponent = ({ aboutUseRef }) => {
             align="center"
             justify="center"
           >
-            <Image preview={false} src={mattsTeam} />
+            <Image
+              preview={false}
+              src="https://cornhole-site-asset-bucket.s3.us-east-2.amazonaws.com/ceo-soak-team-matt.jpeg"
+            />
           </Col>
         </Row>
       </Row>
