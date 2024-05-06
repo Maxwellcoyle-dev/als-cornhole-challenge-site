@@ -206,7 +206,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+
   margin: 0;
 }
 
@@ -220,6 +220,9 @@
 }
 
 @media (max-width: 991px) {
+  .includedContainerDiv {
+    justify-content: center;
+  }
   .includedCard {
     width: 100%;
   }

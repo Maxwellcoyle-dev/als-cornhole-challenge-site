@@ -76,7 +76,7 @@ const EventDetailsPage = () => {
         gutter={[16, 0]} // [horizontal, vertical]}
       >
         <Col
-          xl={10}
+          xl={12}
           lg={12}
           md={20}
           sm={20}
@@ -153,7 +153,7 @@ const EventDetailsPage = () => {
           </Card>
         </Col>
         <Col
-          xl={{ span: 10 }}
+          xl={8}
           lg={8}
           md={20}
           sm={20}
@@ -163,8 +163,8 @@ const EventDetailsPage = () => {
         >
           <MapComponent />
         </Col>
-
-        <Col xl={18} lg={20} md={20} sm={20} xs={22}>
+        <Divider />
+        <Col sm={20} xs={22}>
           <Title level={2} className={styles.level2SectionTitle}>
             About
           </Title>
@@ -172,14 +172,7 @@ const EventDetailsPage = () => {
             <Paragraph key={index}>{line}</Paragraph>
           ))}
         </Col>
-        <Col
-          xl={18}
-          lg={20}
-          md={20}
-          sm={20}
-          xs={22}
-          className={styles.includedSectionCol}
-        >
+        <Col sm={20} xs={22} className={styles.includedSectionCol}>
           <Title level={2} className={styles.level2SectionTitle}>
             What's Included
           </Title>
