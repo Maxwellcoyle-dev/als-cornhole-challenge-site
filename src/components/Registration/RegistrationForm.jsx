@@ -11,6 +11,8 @@ import {
 } from "antd";
 import { UserOutlined, MailOutlined, TeamOutlined } from "@ant-design/icons";
 
+import styles from "../../pages/RegistrationPage/RegistrationPage.module.css";
+
 const { Title, Paragraph } = Typography;
 const { Item } = Form;
 
@@ -143,7 +145,6 @@ const RegistrationForm = ({
               rules={[
                 { required: true, message: "Please input your last name!" },
               ]}
-              style={{ padding: 0, margin: 0 }}
             >
               <Input prefix={<UserOutlined />} placeholder="Last Name" />
             </Item>
@@ -164,7 +165,7 @@ const RegistrationForm = ({
           </Col>
           <Col xs={24}>
             <Item label="Skill Level" name="skillLevel" required>
-              <Radio.Group>
+              <Radio.Group className={styles.skillLevelItemContainer}>
                 <Radio value="beginner">Beginner</Radio>
                 <Radio value="intermediate">Intermediate</Radio>
                 <Radio value="advanced">Advanced</Radio>

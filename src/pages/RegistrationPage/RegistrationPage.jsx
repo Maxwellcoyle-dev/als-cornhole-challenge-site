@@ -58,8 +58,12 @@ const RegistrationPage = () => {
   }, [event]);
 
   return (
-    <Row className={styles.registrationPage} justify="center" gutter={[32]}>
-      <Col lg={12}>
+    <Row className={styles.registrationPage} justify="center">
+      <Col
+        lg={{ span: 12, order: 1 }}
+        sm={{ span: 20, order: 2 }}
+        xs={{ span: 22, order: 2 }}
+      >
         {showRegistrationForm ? (
           <RegistrationForm
             registrationFormData={registrationFormData}
@@ -77,7 +81,11 @@ const RegistrationPage = () => {
           />
         )}
       </Col>
-      <Col lg={8}>
+      <Col
+        lg={{ span: 8, order: 2 }}
+        sm={{ span: 20, order: 1 }}
+        xs={{ span: 22, order: 1 }}
+      >
         <CheckoutInfoCard
           registrationFormData={registrationFormData}
           event={event}
