@@ -1,0 +1,130 @@
+[
+  {
+    "event_id": 1,
+    "event_name": "ALS Cornhole Challenge #1 @ Velum Fermentation",
+    "event_date": "June 7, 2024",
+    "start_time": "6:30 PM",
+    "doors_open": "6:00 PM",
+    "address": "2120 Jane St, Pittsburgh, PA 15203",
+    "location": "Velum Fermentation",
+    "description": "Join us for a cornhole, beer, and good times at Velum Fermentation in the Southside. This cornhole tournament is designed to raise money for local ALS causes. Competitors have the option to register in pairs or individually. The event will start with a round of friendly matches, then we’ll dive into the double elimination tournament. For those registering as individuals, you’ll be randomly paired with another player from the player pool. Prizes will be awarded to the top three teams.",
+    "event_short_description": "Double elimination tournament, bring your own partner or register as an individual to be matched with a partner. Registration closes at 6:20 on June 7, 2024. Proceeds go to support Matt Henderson in the 2024 ALS CEO Soak.",
+    "included_activities": [
+      {
+        "name": "Doubles Tournament",
+        "description": "Start off with a friendly match to get warmed up. Then we’ll start a double elimination tournament. The top 3 teams will win cash prizes."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, this player wins. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets one attempt to score a cornhole. The prize for winning the game is $50."
+      }
+    ],
+    "registration": [
+      {
+        "registration_type": "team",
+        "price": 50
+      },
+      {
+        "registration_type": "individual",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "event_id": 2,
+    "event_name": "ALS Cornhole Challenge #2 @ Living Faith Church",
+    "event_date": "2024-06-15",
+    "start_time": "4:00 PM",
+    "doors_open": "3:30 PM",
+    "address": "1718 PA-588, Fombell, PA 16123",
+    "location": "Living Faith Church",
+    "description": "Join us for a cornhole tournament designed for beginner and intermediate players. Competitors have the option to register in pairs or individually. The event will start with four round robin games to determine initial rankings. Depending on the number of players, participants may be split into two brackets based on their performance in these games. For those registering as individuals, partners will be rotated during the round robin phase. Once this phase concludes, individuals will be placed into brackets based on their win/loss records and paired randomly within their bracket for a double elimination tournament. Prizes will be awarded to the top three teams.",
+    "event_short_description": "Double elimination tournament, bring your own partner or register as an individual to be matched with a partner. Registration closes at 6:20 on June 15, 2024. Proceeds go to support Matt Henderson in the 2024 ALS CEO Soak.",
+    "included_activities": [
+      {
+        "activity": "Doubles Tournament",
+        "details": "Start off with a friendly match to get warmed up. Then we’ll start a double elimination tournament. The top 3 teams will win cash prizes."
+      },
+      {
+        "activity": "One Shot Challenge",
+        "details": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, this player wins. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets two attempts to score a cornhole. The prize for winning the game is $50."
+      }
+    ],
+    "registration": [
+      {
+        "registration_type": "team",
+        "price": 50
+      },
+      {
+        "registration_type": "individual",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "event_id": 3,
+    "event_name": "ALS Cornhole Challenge #3 @ Velum Fermentation",
+    "event_date": "June 28, 2024",
+    "start_time": "6:30 PM",
+    "doors_open": "6:00 PM",
+    "address": "2120 Jane St, Pittsburgh, PA 15203",
+    "location": "Velum Fermentation",
+    "description": "Join us for a cornhole, beer, and good times at Velum Fermentation in the Southside. This cornhole tournament is designed to raise money for local ALS causes. Competitors have the option to register in pairs or individually. The event will start with a round of friendly matches, then we’ll dive into the double elimination tournament. For those registering as individuals, you’ll be randomly paired with another player from the player pool. Prizes will be awarded to the top three teams.",
+    "event_short_description": "Double elimination tournament, bring your own partner or register as an individual to be matched with a partner. Registration closes at 6:20 on June 28, 2024. Proceeds go to support Matt Henderson in the 2024 ALS CEO Soak.",
+    "included_activities": [
+      {
+        "name": "Doubles Tournament",
+        "description": "Start off with a friendly match to get warmed up. Then we’ll start a double elimination tournament. The top 3 teams will win cash prizes."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, this player wins. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets one attempt to score a cornhole. The prize for winning the game is $50."
+      }
+    ],
+    "registration": [
+      {
+        "registration_type": "team",
+        "price": 50
+      },
+      {
+        "registration_type": "individual",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "event_id": 4,
+    "event_name": "ALS Cornhole Challenge #4 @ Velum Fermentation",
+    "event_date": "July 26, 2024",
+    "start_time": "6:30 PM",
+    "doors_open": "6:00 PM",
+    "address": "2120 Jane St, Pittsburgh, PA 15203",
+    "location": "Velum Fermentation",
+    "description": "Join us for a cornhole, beer, and good times at Velum Fermentation in the Southside. This cornhole tournament is designed to raise money for local ALS causes. Competitors have the option to register in pairs or individually. The event will start with a round of friendly matches, then we’ll dive into the double elimination tournament. For those registering as individuals, you’ll be randomly paired with another player from the player pool. Prizes will be awarded to the top three teams.",
+    "event_short_description": "Double elimination tournament, bring your own partner or register as an individual to be matched with a partner. Registration closes at 6:20 on July 26, 2024. Proceeds go to support Matt Henderson in the 2024 ALS CEO Soak.",
+    "included": [
+      {
+        "name": "Doubles Tournament",
+        "description": "Start off with a friendly match to get warmed up. Then we’ll start a double elimination tournament. The top 3 teams will win cash prizes."
+      },
+      {
+        "name": "One Shot Challenge",
+        "description": "Each participant receives a raffle ticket and one throw to score a cornhole. Players who miss are eliminated. This continues until only one player scores a cornhole, this player wins. If no one scores during a round, a raffle ticket is drawn. The selected raffle winner gets one attempt to score a cornhole. The prize for winning the game is $50."
+      }
+    ],
+    "registration": [
+      {
+        "registration_type": "team",
+        "price": 50
+      },
+      {
+        "registration_type": "individual",
+        "price": 25
+      }
+    ],
+    "location_params": {
+      "lat": 40.42680379326892,
+      "lng": -79.97564351430584
+    }
+  }
+]

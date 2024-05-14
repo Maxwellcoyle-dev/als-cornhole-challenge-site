@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   APIProvider,
   Map,
@@ -12,17 +12,23 @@ import { IoOpenOutline } from "react-icons/io5";
 
 import styles from "./MapComponent.module.css";
 
-const MapComponent = ({
-  googleMapsLink = "https://maps.app.goo.gl/51SCadm4NndAuoCE9",
-}) => {
-  const [viewState, setViewState] = useState({
-    lat: 40.79465231701291,
-    lng: -80.17061232690759,
-  });
+const MapComponent = ({ googleMapsLink, locationParams }) => {
+  const [viewState, setViewState] = useState(null);
 
   const handleMapClick = () => {
     window.open(googleMapsLink, "_blank"); // Open in a new tab
   };
+
+  useEffect(() => {
+    console.log("locationParams: ", locationParams);
+    if (locationParams) {
+      const updatedViewState = {
+        lat: parseFloat(locationParams.lat), // Convert string to float
+        lng: parseFloat(locationParams.lng), // Convert string to float
+      };
+      setViewState(updatedViewState);
+    }
+  }, [locationParams]);
 
   const mapOptions = {
     zoomControl: false,

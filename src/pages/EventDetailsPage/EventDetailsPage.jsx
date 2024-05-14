@@ -167,7 +167,10 @@ const EventDetailsPage = () => {
           className={styles.mapSectionCol}
           justify="center"
         >
-          <MapComponent />
+          <MapComponent
+            locationParams={event.location_params}
+            googleMapsLink={event.google_maps_link}
+          />
         </Col>
         <Divider />
         <Col sm={20} xs={22}>

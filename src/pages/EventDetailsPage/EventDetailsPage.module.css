@@ -122,6 +122,8 @@
   color: #616161 !important;
   margin: 0 0 1.5rem 0 !important;
   color: #228b22 !important;
+  text-wrap: wrap !important;
+  word-break: keep-all !important;
 }
 
 .level2SectionTitle {
