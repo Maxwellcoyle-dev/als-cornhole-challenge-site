@@ -112,7 +112,13 @@ const EventDetailsPage = () => {
             <div className={styles.heroCardListItem}>
               <IoTimeOutline size={28} className={styles.basicIcon} />
               <Paragraph className={[styles.cardText, styles.textStyle]}>
-                {event.start_time}
+                Doors Open: {event.doors_open}
+              </Paragraph>
+            </div>
+            <div className={styles.heroCardListItem}>
+              <IoTimeOutline size={28} className={styles.basicIcon} />
+              <Paragraph className={[styles.cardText, styles.textStyle]}>
+                Start Time: {event.start_time}
               </Paragraph>
             </div>
             <Divider />
