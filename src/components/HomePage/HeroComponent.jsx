@@ -38,7 +38,7 @@ const HeroComponent = ({ setScrollToEvents }) => {
             fontSize: "1.6rem",
           }}
         >
-          Cornhole events in Western PA, raising funds for local ALS causes.
+          Cornhole Events Supporting Local ALS Causes.
         </Typography.Title>
         <Typography.Paragraph
           style={{ width: "100%", textAlign: "center" }}
