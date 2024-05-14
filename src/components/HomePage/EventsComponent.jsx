@@ -9,7 +9,6 @@ import {
 import dayjs from "dayjs";
 
 import useListEvents from "../../hooks/useListEvents";
-// import events from "../../demoEventTableData.json";
 
 import styles from "../../pages/HomePage/HomePage.module.css";
 
@@ -19,7 +18,8 @@ const EventsComponent = ({ eventsUseRef }) => {
   const navigate = useNavigate();
   const { events, eventsIsPending } = useListEvents();
 
-  // return date/time value like so: 2024-04-12T12:00:00
+  console.log("events", events);
+
   const eventDateTime = (event) => {
     return `${event.event_date}T${event.event_time}`;
   };
@@ -88,8 +88,7 @@ const EventsComponent = ({ eventsUseRef }) => {
                 }}
               >
                 <Paragraph className={styles.cardSubTitle}>
-                  {dayjs(event.event_date).format("ddd, MMM d, YYYY")} @{" "}
-                  {event.doors_open}
+                  {event.event_date} - Doors Open @ {event.doors_open}
                 </Paragraph>
                 <Title level={5} className={styles.levelFourFont}>
                   {event.event_name}
