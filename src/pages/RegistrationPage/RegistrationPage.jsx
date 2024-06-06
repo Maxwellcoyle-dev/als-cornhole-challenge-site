@@ -10,12 +10,11 @@ import CheckoutInfoCard from "../../components/Registration/CheckoutInfoCard";
 
 // Hooks
 import useCreateRegistration from "../../hooks/useCreateRegistration";
-
-// import demo data from json file
-import events from "../../demoEventTableData.json";
+import useListEvents from "../../hooks/useListEvents";
 
 import styles from "./RegistrationPage.module.css";
 import RegistrationConfirmation from "../../components/Registration/RegistrationConfirmation";
+import { type } from "@testing-library/user-event/dist/type";
 
 const defaultRegistrationFormData = {
   firstName: "",
@@ -30,10 +29,17 @@ const defaultRegistrationFormData = {
 };
 
 const RegistrationPage = () => {
+  const [event, setEvent] = useState(null);
+  const [error, setError] = useState(false);
+
+  const { events, eventsIsPending, eventsIsError } = useListEvents();
+
   const { event_id } = useParams();
+
   const [registrationFormData, setRegistrationFormData] = useState(
     defaultRegistrationFormData
   ); // Store registration data
+
   const [showRegistrationForm, setShowRegistrationForm] = useState(true); // Store registration completion status
   const [paymentComplete, setPaymentComplete] = useState(false); // Store payment completion status
 
@@ -41,8 +47,7 @@ const RegistrationPage = () => {
     useCreateRegistration();
 
   // const { events, isPending, isError } = useListEvents();
-
-  const event = events?.find((event) => event.event_id === event_id);
+  // const event = events?.find((event) => event.event_id === event_id);
 
   const handleRegister = () => {
     putRegistration({
@@ -53,9 +58,17 @@ const RegistrationPage = () => {
   };
 
   useEffect(() => {
-    console.log("event_id: ", event_id);
-    console.log("event: ", event);
-  }, [event]);
+    if (events) {
+      console.log("events: ", events);
+      console.log("event_id: ", event_id);
+      const selectedEvent = events?.find((e) => e.event_id === event_id);
+      if (selectedEvent) {
+        setEvent(selectedEvent);
+      } else {
+        setError(true);
+      }
+    }
+  }, [events, event_id]);
 
   return (
     <Row className={styles.registrationPage} justify="center">
@@ -89,6 +102,7 @@ const RegistrationPage = () => {
         <CheckoutInfoCard
           registrationFormData={registrationFormData}
           event={event}
+          eventsIsPending={eventsIsPending}
         />
       </Col>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Typography, Divider, Button } from "antd";
+import { Card, Typography, Divider, Spin } from "antd";
 import {
   TeamOutlined,
   CalendarOutlined,
@@ -10,17 +10,12 @@ import { IoLocationOutline, IoTimeOutline } from "react-icons/io5";
 
 const { Title, Text } = Typography;
 
-const CheckoutInfoCard = ({ registrationFormData, event }) => {
-  const {
-    event_name: eventName,
-    event_date: eventDate,
-    event_location: eventLocation,
-    event_address: eventAddress,
-    start_time: startTime,
-    doors_open: doorsOpen,
-  } = event;
-
+const CheckoutInfoCard = ({ registrationFormData, event, eventsIsPending }) => {
   const { registrationType } = registrationFormData;
+
+  if (eventsIsPending) {
+    return <Spin />;
+  }
 
   return (
     <Card
@@ -42,22 +37,22 @@ const CheckoutInfoCard = ({ registrationFormData, event }) => {
           gap: ".5rem",
         }}
       >
-        <Title level={4}>{eventName}</Title>
+        <Title level={4}>{event?.event_name}</Title>
         <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
           <CalendarOutlined style={{ width: "1.5rem", height: "1.5rem" }} />
-          <Text>{eventDate}</Text>
+          <Text>{event?.event_date}</Text>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
           <IoLocationOutline style={{ width: "1.5rem", height: "1.5rem" }} />
           <Text>
-            {eventLocation} <br /> {eventAddress}
+            {event?.event_location} <br /> {event?.event_address}
           </Text>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
           <IoTimeOutline style={{ width: "1.5rem", height: "1.5rem" }} />
           <Text>
-            Doors Open @ {doorsOpen} <br /> Starts @ {startTime}{" "}
+            Doors Open @ {event?.doors_open} <br /> Starts @ {event?.start_time}{" "}
           </Text>
         </div>
       </div>
