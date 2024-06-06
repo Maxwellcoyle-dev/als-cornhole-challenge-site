@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ReactGA from "react-ga4";
 
 import { Layout } from "antd"; // Importing Layout from Ant Design
 
@@ -16,6 +17,8 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [scrollToEvents, setScrollToEvents] = useState(false);
+
+  ReactGA.initialize("G-JJ8YQRM0PQ");
 
   return (
     <QueryClientProvider client={queryClient}>
