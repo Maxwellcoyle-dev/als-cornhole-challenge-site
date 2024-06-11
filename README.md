@@ -1,4 +1,4 @@
-* ALS Cornhole Challenge - Frontend
+ALS Cornhole Challenge - Frontend
 
 Overview
 The ALS Cornhole Challenge is a React web application designed to raise awareness about ALS research and raise funds by hosting cornhole tournaments in the Pittsburgh area. The site allows users to view upcoming events and register for them.
