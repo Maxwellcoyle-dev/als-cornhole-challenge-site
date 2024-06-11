@@ -9,10 +9,10 @@ Register for events
 Responsive design using Ant Design
 
 Tech Stack: 
-- React: JavaScript library for building user interfaces
+- React
 - Yarn: Package manager
 - Axios: HTTP client for making requests
-- React Query: Data-fetching library
+- React Query: Data-fetching library and state management
 - AWS SDK: For interacting with AWS services
 - Ant Design: UI framework
 
