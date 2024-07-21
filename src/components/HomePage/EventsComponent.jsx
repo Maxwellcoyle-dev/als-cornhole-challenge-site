@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Flex, Row, Col, Card, Typography, Button, Spin } from "antd";
+import { Row, Col, Card, Typography, Button, Spin } from "antd";
 import {
   IoLocationOutline,
   IoCheckmarkCircleOutline,
@@ -20,17 +20,34 @@ const EventsComponent = ({ eventsUseRef }) => {
 
   console.log("events", events);
 
-  const eventDateTime = (event) => {
-    return `${event.event_date}T${event.event_time}`;
+  const isFutureEvent = (event, currentDate) => {
+    if (!event.event_date) {
+      console.error("event_date is missing in the event object");
+      return false;
+    }
+
+    // Parse the event_date correctly
+    const eventDateTimeString = `${event.event_date} ${
+      event.event_time || "00:00:00"
+    }`;
+    const eventDateTime = dayjs(eventDateTimeString, "MMMM D, YYYY HH:mm:ss");
+
+    console.log("Parsed eventDateTime", eventDateTime.format());
+
+    return eventDateTime.isAfter(currentDate);
   };
 
-  const currentDate = new Date();
+  const currentDate = dayjs();
 
   const handleViewEventDetailsClick = (eventId) => {
     console.log("eventId", eventId);
     console.log(typeof eventId);
     navigate(`/event/${eventId}`);
   };
+
+  // Filter events to show only future events
+  const futureEvents =
+    events?.filter((event) => isFutureEvent(event, currentDate)) || [];
 
   return (
     <Row
@@ -65,101 +82,95 @@ const EventsComponent = ({ eventsUseRef }) => {
         </div>
       )}
 
-      {events &&
-        events.map((event, index) => (
-          <Col
-            xs={22}
-            sm={20}
-            md={20}
-            lg={7}
-            xl={7}
-            xxl={7}
-            style={{ width: "min-content" }}
-            key={index}
+      {futureEvents.length === 0 && (
+        <Col sm={19} md={18} lg={22} xl={22}>
+          <Title
+            style={{ margin: 0, marginBottom: "1rem", textAlign: "center" }}
+            className={styles.levelFourFont}
+            level={4}
           >
-            {events && (
-              <Card
-                className={styles.eventCard}
+            No upcoming events
+          </Title>
+        </Col>
+      )}
+
+      {futureEvents.map((event, index) => (
+        <Col
+          xs={22}
+          sm={20}
+          md={20}
+          lg={7}
+          xl={7}
+          xxl={7}
+          style={{ width: "min-content" }}
+          key={index}
+        >
+          <Card
+            className={styles.eventCard}
+            style={{
+              backgroundColor: "white",
+              borderRadius: 8,
+              boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+              width: "100%",
+            }}
+          >
+            <Paragraph className={styles.cardSubTitle}>
+              {event.event_date} - Doors Open @ {event.doors_open}
+            </Paragraph>
+            <Title level={5} className={styles.levelFourFont}>
+              {event.event_name}
+            </Title>
+            <div className={styles.flexVertical}>
+              <Paragraph
+                className={styles.textStyle}
                 style={{
-                  backgroundColor: "white",
-                  borderRadius: 8,
-                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".5rem",
+                  margin: 0,
                 }}
               >
-                <Paragraph className={styles.cardSubTitle}>
-                  {event.event_date} - Doors Open @ {event.doors_open}
-                </Paragraph>
-                <Title level={5} className={styles.levelFourFont}>
-                  {event.event_name}
-                </Title>
-                <Flex vertical gap=".5rem">
-                  <Paragraph
-                    className={styles.textStyle}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: ".5rem",
-                      margin: 0,
-                    }}
-                  >
-                    <IoLocationOutline
-                      color="#228b22"
-                      style={{ minWidth: 22 }}
-                    />
-                    {event.event_location} - {event.event_address}
-                  </Paragraph>
+                <IoLocationOutline color="#228b22" style={{ minWidth: 22 }} />
+                {event.event_location} - {event.event_address}
+              </Paragraph>
 
-                  <Paragraph
-                    className={styles.textStyle}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: ".5rem",
-                      margin: 0,
-                    }}
-                  >
-                    {eventDateTime(event) < currentDate ? (
-                      <>
-                        <IoLockClosedOutline
-                          color="red"
-                          style={{ fontSize: 22 }}
-                        />{" "}
-                        Registration Closed
-                      </>
-                    ) : (
-                      <>
-                        <IoCheckmarkCircleOutline
-                          color="#228b22"
-                          style={{ fontSize: 22 }}
-                        />{" "}
-                        Registration Open
-                      </>
-                    )}
-                  </Paragraph>
-                </Flex>
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    marginTop: "3rem",
-                  }}
-                >
-                  <Button
-                    onClick={() => handleViewEventDetailsClick(event.event_id)}
-                    block
-                    type="default"
-                    className={styles.eventCardButton}
-                    size="large"
-                  >
-                    View Details
-                  </Button>
-                </div>
-              </Card>
-            )}
-          </Col>
-        ))}
+              <Paragraph
+                className={styles.textStyle}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".5rem",
+                  margin: 0,
+                }}
+              >
+                <IoCheckmarkCircleOutline
+                  color="#228b22"
+                  style={{ fontSize: 22 }}
+                />{" "}
+                Registration Open
+              </Paragraph>
+            </div>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "3rem",
+              }}
+            >
+              <Button
+                onClick={() => handleViewEventDetailsClick(event.event_id)}
+                block
+                type="default"
+                className={styles.eventCardButton}
+                size="large"
+              >
+                View Details
+              </Button>
+            </div>
+          </Card>
+        </Col>
+      ))}
     </Row>
   );
 };
